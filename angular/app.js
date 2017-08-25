@@ -1,0 +1,1 @@
+var app = angular.module("dhsApp", ['ngRoute','dialogs', 'ui.bootstrap', 'toaster', 'ui.router']);
