@@ -1,6 +1,14 @@
 
-app.controller("adminController", function ($scope, $http,$modal) {
+app.controller("adminController", function ($scope, $http,$modal,sharedService,loginService,$window) {
     "use strict"
+
+    //here logging in assigning object with the information from DB
+       $scope.sharedData = sharedService.getData();
+        $scope.details=$scope.sharedData[0];
+        $scope.username=$scope.sharedData[0].username ;
+        $scope.password = $scope.sharedData[0].password;
+      
+        //opening sign in modal
  $scope.openSignModal = function (patients) {
         var modalInstance = $modal.open({
             backdrop: 'static',
@@ -20,21 +28,26 @@ app.controller("adminController", function ($scope, $http,$modal) {
                     }, function () {
          });
     };
-//get patients list
-$scope.patientsList=function(){
-                $http({
-                    url: "getPatientInfo.php",
-                    method: "GET"
-                    }).then(function (results) {
-                    $scope.patients= results.data;                
-                });
-       }
-$scope.patientsList();
+    //get patients list
+    $scope.patientsList=function(){
+                    $http({
+                        url: "getPatientInfo.php",
+                        method: "GET"
+                        }).then(function (results) {
+                        $scope.patients= results.data;                
+                    });
+        }
+    $scope.patientsList();
 
- 
+ //log out
+   $scope.logout=function(){               
+               $window.sessionStorage.clear();
+              window.location.href='index.php';  
+          }
+
    
 });
-app.controller("patientRegController", function ($scope, $http, $modalInstance, toaster, $dialogs,patients) {
+app.controller("patientRegController", function ($scope, $http, $modalInstance, toaster, $dialogs,patients,loginService,$window) {
   //set form dirty angular validation
   $scope.setDirtyForm = function (form) { angular.forEach(form.$error, function (type) { angular.forEach(type, function (field) { field.$setDirty(); }); }); return form; };
 $scope.updateStatus = patients != undefined ? 'Update' : 'Create';
@@ -43,7 +56,6 @@ if ($scope.updateStatus == 'Update')
     { $scope.truefalse = "true"; }
 //assigning selected patient from modal
 $scope.patientData=patients;
-
 //ID validation
    $scope.ValidateIdnumber = function(){
        var resultArray =  ValidateID($('#id_number').val());
