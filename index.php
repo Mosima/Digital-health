@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="css/bootstrap.css">
    <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/angular-toastr.min.css">
-    <link rel="stylesheet" href="css/style.css">  
+    <link rel="stylesheet" href="css/style2.css">  
 </head>
 <body ng-controller="indexController">
         <div class="col-md-12 header">
-            <img class="image" src="img/med/careLogo.svg">
+        <div class="logo"></div>
         </div>
                 <div class="col-md-12 nav-pills-container">
                     <ul class="nav nav-pills">

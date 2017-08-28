@@ -32,7 +32,6 @@
              <div class="col-sm-3">                     
             </div>
         </div>
-        
             <div class="totalsWidget outer " >
                 <div class="activeWidget">
                     <div class="cornered"><p>Newly files</p></div>
@@ -40,20 +39,19 @@
                 </div>
             </div>
             <div class="totalsWidget outer" style="margin-left: 10px;" >
-                <div class="cornered"><p>Waiting For Doctor</p></div>
-                <div class="main"><p>2</p></div>
+                <div class="cornered"><p></p></div>
+                <div class="main"><p></p></div>
             </div>  
             <div class="totalsWidget outer" style="margin-left: 30px;">
-                <div class="cornered"><p>Seen By Doctor</p></div>
-                <div class="main"><p>10</p></div>
+                <div class="cornered"><p></p></div>
+                <div class="main"><p></p></div>
             </div>
             <div class="totalsWidget outer" style="margin-left: 20px;">
-                <div class="cornered"><p>Visited Patients</p></div>
-                <div class="main"><p>4</p></div>
+                <div class="cornered"><p> </p></div>
+                <div class="main"><p> </p></div>
             </div>     
     </div>
 </div>
-
     <div class="col-md-12 search-and-results-container">
           <!-- Search bar -->
          <div class="input-group add-on">
@@ -91,7 +89,7 @@
                         {{patient.kinName}}  {{patient.kinCell}}
                     </td>
                    <td>
-                       <button type="button" class="btn btn-primary-search" >View</button>  <button class="btn btn-primary-search"  ng-click="openSignModal(patient)" >Edit</button>
+                       <button type="button"  value="submit" class="btn btn-warning" ng-click="delete(patient)">Delete</button>  <button class="btn btn-primary"  ng-click="openSignModal(patient)" >Edit</button>
                    </td>
                 </tr>               
               </tbody>
@@ -117,7 +115,7 @@
                                      <br /> <span id="errors" style="color:red" ></span>
                                 </div>
                             </div>
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class="control-label col-sm-3" for="name">Name:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.FirstName.$invalid && !registerForm.FirstName.$pristine }" >
                                     <input type="text" class="form-control" id="FirstName" name="FirstName"  ng-model="patientData.FirstName" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" required>
@@ -125,7 +123,7 @@
                                      <span style="color:red" ng-show="registerForm.FirstName.$error.pattern">incorrect name format</span> 
                                 </div>
                             </div>
-                            <div class="form-group" >
+                            <div class="form-group">
                                 <label class="control-label col-sm-3">Surname:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.Surname.$invalid && !registerForm.Surname.$pristine }">
                                     <input type="text" class="form-control" name="Surname"  data-ng-model="patientData.Surname" ng-pattern="/^[a-zA-Z_-]*$/" maxLength='25' required >
@@ -156,8 +154,7 @@
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.HomeAddress.$invalid && !registerForm.HomeAddress.$pristine }">
                                      <textarea class="comment-text" id="HomeAddress" name ="HomeAddress"  ng-model="patientData.HomeAddress" required ></textarea> 
                                      <span style="color:red" ng-show="registerForm.HomeAddress.$pristine && registerForm.HomeAddress.$invalid">  required.</span>
-                                </div>
-                                
+                                </div>                               
                             </div>
                             <div >
                                 <div class="col-md-12" 

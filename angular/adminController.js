@@ -39,6 +39,17 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
         }
     $scope.patientsList();
 
+     //delete user
+     $scope.delete =function(patient){
+           $http.post(
+                         "deleteUser.php", {
+                                'patientID': patient.patientID
+                            }
+                        ).then(function (response) {
+                            $scope.deletApp = response.data; 
+                              $scope.patientsList();                  
+                        });
+     }
  //log out
    $scope.logout=function(){               
                $window.sessionStorage.clear();
