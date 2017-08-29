@@ -17,7 +17,9 @@
               $createDate=mysqli_real_escape_string($connect, $patientObj->createDate); 
               $userState=mysqli_real_escape_string($connect, $patientObj->state);  
               $kinName=mysqli_real_escape_string($connect, $patientObj->kinName); 
-              $kinCell=mysqli_real_escape_string($connect, $patientObj->kinCellNo); 
+              $kinCell=mysqli_real_escape_string($connect, $patientObj->kinCellNo);
+              $username=substr($patientID,0,6);
+              $password=substr($patientID,9,5); 
               $errors = array();
 
               if($userState=='Create'){
@@ -32,8 +34,8 @@
                               $data= 0;
                           }else{
                             //insert to DB
-                                  $sql= "INSERT INTO patient(patientID,FirstName,Surname,CellNumber, Email,Gender,HomeAddress,createDate,kinName,kinCell)
-                                  VALUES($patientID,'$FirstName','$Surname',$CellNumber,'$Email','$Gender','$HomeAddress','$createDate','$kinName','$kinCell')";             
+                                  $sql= "INSERT INTO patient(patientID,FirstName,Surname,CellNumber, Email,Gender,HomeAddress,createDate,kinName,kinCell,username,password)
+                                  VALUES($patientID,'$FirstName','$Surname',$CellNumber,'$Email','$Gender','$HomeAddress','$createDate','$kinName','$kinCell','$username','$password')";             
                                 $data= 1;
                           }
                     
