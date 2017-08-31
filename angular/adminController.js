@@ -1,5 +1,5 @@
 
-app.controller("adminController", function ($scope, $http,$modal,sharedService,loginService,$window) {
+app.controller("adminController", function ($scope, $http,$modal,sharedService,loginService,$window,$dialogs) {
     "use strict"
 
     //here logging in assigning object with the information from DB
@@ -41,6 +41,9 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
 
      //delete user
      $scope.delete =function(patient){
+           var dlg = null;
+                dlg = $dialogs.confirm("Are you sure you want to delete the user. Continue?", "");
+                dlg.result.then(function (btn) {
            $http.post(
                          "deleteUser.php", {
                                 'patientID': patient.patientID
@@ -49,6 +52,7 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
                             $scope.deletApp = response.data; 
                               $scope.patientsList();                  
                         });
+                });
      }
  //log out
    $scope.logout=function(){               
@@ -86,7 +90,7 @@ $scope.patientData=patients;
 
       if ($scope.registerForm.$valid) {
         //extract gender from IDnumber
-            var saIds =$scope.patientData.patientID;
+            var saIds =$scope.patientData.idNumber;
             var saId=(saIds.substr ( 6  , 4));
             if ((saId > 4999) & (saId < 10000)){
 				 $scope.patientData.gender='Male';
@@ -97,12 +101,12 @@ $scope.patientData=patients;
             //get current date 
             var todayDate =new Date();
            var selDate = todayDate.toISOString();
-             $scope.patientData.createDate=selDate.substring(0,10);
-
+            $scope.patientData.createDate=selDate.substring(0,10);
+            $scope.patientData.pID=saIds.substring(7,13);
         //send data to php file via ajax
             $http.post(
                 "insertPatient.php", {
-                    'idNo': $scope.patientData.patientID,'name': $scope.patientData.FirstName, 'surname': $scope.patientData.Surname, 'cellNo': $scope.patientData.CellNumber, 'email': $scope.patientData.Email, 'address': $scope.patientData.HomeAddress,'gender':$scope.patientData.gender,'createDate':$scope.patientData.createDate,'state':$scope.updateStatus,'kinCellNo':$scope.patientData.kinCell,'kinName':$scope.patientData.kinName 
+                    'idNo': $scope.patientData.idNumber,'pId':$scope.patientData.pID,'name': $scope.patientData.FirstName, 'surname': $scope.patientData.Surname, 'cellNo': $scope.patientData.CellNumber, 'email': $scope.patientData.Email, 'address': $scope.patientData.HomeAddress,'gender':$scope.patientData.gender,'createDate':$scope.patientData.createDate,'state':$scope.updateStatus,'kinCellNo':$scope.patientData.kinCell,'kinName':$scope.patientData.kinName 
                             }
             ) .then(function (response) {
                 if(response.data== 1){

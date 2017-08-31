@@ -77,7 +77,7 @@
                 <tbody>
                 <tr ng-repeat="patient in patients | filter:filterUsers">
                     <td>
-                       {{patient.patientID}}
+                       {{patient.idNumber}}
                     </td>
                     <td>{{patient.FirstName}}</td>
                     <td>{{patient.Surname}}</td>
@@ -110,7 +110,7 @@
                             <div class="form-group" >
                                 <label class="control-label col-sm-3">Patient ID:</label>
                                 <div class="col-sm-9" ng-keyup="ValidateIdnumber()" ng-class="{'has-error' : registerForm.IDNo.$invalid && !registerForm.IDNo.$pristine }" >
-                                    <input type="text" class="form-control" id="id_number" name="id_number"  ng-model="patientData.patientID" ng-pattern="/^[0-9]{13}$/" ng-readonly="{{truefalse}}" required>                  
+                                    <input type="text" class="form-control" id="id_number" name="id_number"  ng-model="patientData.idNumber" ng-pattern="/^[0-9]{13}$/" ng-readonly="{{truefalse}}" required>                  
                                       <span style="color:red" ng-show="registerForm.id_number.$pristine && registerForm.id_number.$invalid "> ID number is required.</span>
                                      <br /> <span id="errors" style="color:red" ></span>
                                 </div>

@@ -7,7 +7,8 @@
 
     if (count($patientObj)>0){
              //assign Variables with json information
-              $patientID=mysqli_real_escape_string($connect, $patientObj->idNo);
+              $patientID=mysqli_real_escape_string($connect, $patientObj->pId);
+              $idNumber=mysqli_real_escape_string($connect, $patientObj->idNo);
               $FirstName=mysqli_real_escape_string($connect, $patientObj->name);
               $Surname=mysqli_real_escape_string($connect, $patientObj->surname);
               $CellNumber=mysqli_real_escape_string($connect, $patientObj->cellNo);
@@ -18,13 +19,13 @@
               $userState=mysqli_real_escape_string($connect, $patientObj->state);  
               $kinName=mysqli_real_escape_string($connect, $patientObj->kinName); 
               $kinCell=mysqli_real_escape_string($connect, $patientObj->kinCellNo);
-              $username=substr($patientID,0,6);
-              $password=substr($patientID,9,5); 
+              $username=substr($idNumber,0,6);
+              $password=substr($idNumber,9,5); 
               $errors = array();
-
+///VALUES ('user3', PASSWORD('pass123'));
               if($userState=='Create'){
                         //checking if the patient already exist
-                        $user_sel= "SELECT * FROM `patient` where patientID ='$patientID'";
+                        $user_sel= "SELECT * FROM `patient` where idNumber ='$idNumber'";
                         $run_query = mysqli_query($connect,$user_sel);
                         //ccheck/counting number of rows for the same use if the exist from database
                         $check_user = mysqli_num_rows($run_query);
@@ -34,18 +35,18 @@
                               $data= 0;
                           }else{
                             //insert to DB
-                                  $sql= "INSERT INTO patient(patientID,FirstName,Surname,CellNumber, Email,Gender,HomeAddress,createDate,kinName,kinCell,username,password)
-                                  VALUES($patientID,'$FirstName','$Surname',$CellNumber,'$Email','$Gender','$HomeAddress','$createDate','$kinName','$kinCell','$username','$password')";             
+                                  $sql= "INSERT INTO patient(patientID,FirstName,Surname,CellNumber, Email,Gender,HomeAddress,createDate,kinName,kinCell,username,password,idNumber)
+                                  VALUES($patientID,'$FirstName','$Surname',$CellNumber,'$Email','$Gender','$HomeAddress','$createDate','$kinName','$kinCell','$username','$password','$idNumber')";             
                                 $data= 1;
                           }
                     
                         if (mysqli_query($connect, $sql)) {
-
-                              $to = $Email;
+                          echo "record deleted successfully";
+                          /*    $to = $Email;
                               $subject = "Registration Confirmation";
-                              $message = "You have Been registered To Our Digital App" ;
-                              $headers = "From: Sosha Hospital"; 
-                            mail($to,$subject,$message,$headers);
+                              $message = "Your username is". " " . $student_no . " " ."Passwors is " . $password ;
+                              $headers = "From:Sosha Hospital"; 
+                            mail($to,$subject,$message,$headers);*/
                             
                           } else {
                             
@@ -58,7 +59,7 @@
                                      `Email` = '$Email',
                                       `HomeAddress`='$HomeAddress'
                                       'kinCell'='$kinCell'
-                                WHERE `patientID` = '$patientID'";
+                                WHERE `patientID` = '$idNumber'";
                        $run_query =  mysqli_query($connect,$update);
                         $data= 3;
                    }

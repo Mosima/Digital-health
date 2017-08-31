@@ -8,7 +8,7 @@
       
               $patientID=mysqli_real_escape_string($connect, $data->patientID);
                          
-              $user_sel= " DELETE FROM `patient` where patientID ='$patientID'";
+              $user_sel= " UPDATE `patient` SET active = 0 where patientID ='$patientID'";
               $run_query = mysqli_query($connect,$user_sel);        
      }
      if (mysqli_query($connect, $user_sel)) {
