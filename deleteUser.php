@@ -6,9 +6,9 @@
     $data=json_decode(file_get_contents("php://input"));
     if (count($data)>0){
       
-              $patientID=mysqli_real_escape_string($connect, $data->patientID);
+              $idNumber=mysqli_real_escape_string($connect, $data->idNumber);
                          
-              $user_sel= " UPDATE `patient` SET active = 0 where patientID ='$patientID'";
+              $user_sel= " UPDATE `patient` SET active = 0 where idNumber ='$idNumber'";
               $run_query = mysqli_query($connect,$user_sel);        
      }
      if (mysqli_query($connect, $user_sel)) {

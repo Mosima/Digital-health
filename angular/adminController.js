@@ -46,7 +46,7 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
                 dlg.result.then(function (btn) {
            $http.post(
                          "deleteUser.php", {
-                                'patientID': patient.patientID
+                                'idNumber': patient.idNumber
                             }
                         ).then(function (response) {
                             $scope.deletApp = response.data; 
