@@ -8,10 +8,11 @@
    <link rel="stylesheet" href="css/bootstrap-theme.css">
     <link rel="stylesheet" href="css/angular-toastr.min.css">
     <link rel="stylesheet" href="css/style2.css">  
+	
 </head>
 <body ng-controller="indexController">
         <div class="col-md-12 header">
-        <div class="logo"></div>
+			<img class="image" src="img/med/careLogo.svg">
         </div>
                 <div class="col-md-12 nav-pills-container">
                     <ul class="nav nav-pills">
@@ -22,18 +23,7 @@
                         <li><a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()">Admin</a></li>
                     </ul>
                 </div>
-        </div>
-        <div class="container">
-            <div class="intro">
-                <div class="w3-content w3-display-container">
-                        <img class="mySlides" src="img/med/back1.jpg">
-                        <img class="mySlides" src="img/med/connect.jpg">
-                        <img class="mySlides" src="img/med/tabs.jpg">
-                        <div class="w3-center w3-display-bottommiddle" style="width:100%" style="height:100%">
-
-                </div>
-            </div>
-        </div>
+ 
             <footer style="align-content: center">
                     <div class="row">
                     <div class="col-lg-12">
