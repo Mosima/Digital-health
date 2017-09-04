@@ -42,11 +42,12 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
      //delete user
      $scope.delete =function(patient){
            var dlg = null;
-                dlg = $dialogs.confirm("Are you sure you want to delete the user. Continue?", "");
+                dlg = $dialogs.confirm("Are you sure you want make changes. Continue?", "");
                 dlg.result.then(function (btn) {
+                
            $http.post(
                          "deleteUser.php", {
-                                'idNumber': patient.idNumber
+                                'idNumber': patient.idNumber,'Active': patient.state
                             }
                         ).then(function (response) {
                             $scope.deletApp = response.data; 

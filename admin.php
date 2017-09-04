@@ -16,8 +16,8 @@
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">           
-            <li><a href="#">Home</a></li>   
-            <li><a href="#">Doctors</a></li>   
+            <li><a href="#"><span class="glyphicon glyphicon-home"></span> </a></li>   
+            <li><a href="#">Staff Members</a></li>   
             <li><a href="#">Reports</a></li>                
             <li class="logout-li"  ng-click="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 
         </ul>      
@@ -65,7 +65,7 @@
             <table class="table table-bordered table-hover header-fixed table-striped">
                 <thead>
                 <tr>
-                     <th>ID</th>
+                     <th>Patient ID</th>
                      <th>Name</th>
                      <th>Surname</th>
                      <th>Gender</th>
@@ -77,7 +77,7 @@
                 <tbody>
                 <tr ng-repeat="patient in patients | filter:filterUsers">
                     <td>
-                       {{patient.idNumber}}
+                       {{patient.patientID}}
                     </td>
                     <td>{{patient.FirstName}}</td>
                     <td>{{patient.Surname}}</td>
@@ -88,8 +88,11 @@
                     <td> 
                         {{patient.kinName}}  {{patient.kinCell}}
                     </td>
-                   <td>
-                       <button type="button"  value="submit" class="btn btn-warning" ng-click="delete(patient)">Delete</button>  <button class="btn btn-primary"  ng-click="openSignModal(patient)" >Edit</button>
+                    <td>
+                        <button class="btn btn-primary" ng-click="openSignModal(patient)">Edit</button>
+                        <button  ng-if="patient.Active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)">Active</button>
+                        <button ng-if="patient.Active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)">In-Active</button>   
+                        <button ng-if="patient.Active=='1'" class="btn btn-success">Assign Doctor</button>                 
                    </td>
                 </tr>               
               </tbody>
@@ -163,7 +166,7 @@
                                 <div class="form-group">
                                     <label class="control-label col-sm-3">Name:</label>
                                     <div class="col-sm-9" ng-class="{'has-error' : registerForm.kinName.$invalid && !registerForm.kinName.$pristine }">
-                                        <input type="text" class="form-control" name="kinName" id="kinName" ng-model="patientData.kinName" ng-readonly="{{truefalse}}" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" required>    
+                                        <input type="text" class="form-control" name="kinName" id="kinName" ng-model="patientData.kinName"  maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" required>    
                                         <span style="color:red" ng-show="registerForm.kinName.$pristine && registerForm.kinName.$invalid"> name required.</span>
                                         <span style="color:red" ng-show="registerForm.kinName.$error.pattern">invalid name!</span>
                                     </div>

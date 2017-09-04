@@ -1,13 +1,11 @@
 <?php
-
-  
    //opening connection
      require_once 'inc.php';
 
                $errors = array();
           //using view from db
               $user_sel= " SELECT *
-                           from allpatient_view";
+                           FROM allpatient_view";
               
               $run_query = mysqli_query($connect,$user_sel);
               $check_user = mysqli_num_rows($run_query);
@@ -17,7 +15,7 @@
                      header('Content-type: application/json');
                       while(  $row=$run_query->fetch_assoc())
                      {
-                       //add to array
+                       //add to array  
                           $d [] =$row;
                      }
 
@@ -26,6 +24,5 @@
                    $d=0;
                 }
            
-   print  json_encode($d);
-  
+   print  json_encode($d); 
 ?>

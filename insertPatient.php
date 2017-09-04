@@ -41,7 +41,7 @@
                           }
                     
                         if (mysqli_query($connect, $sql)) {
-                          echo "record deleted successfully";
+                          
                           /*    $to = $Email;
                               $subject = "Registration Confirmation";
                               $message = "Your username is". " " . $student_no . " " ."Passwors is " . $password ;
@@ -53,11 +53,12 @@
                           }
                    }else{
                        $update= "UPDATE `patient` 
-                                SET `FirstName` = '$FirstName',
+                                 SET `FirstName` = '$FirstName',
                                      `Surname` = '$Surname',
                                      `CellNumber`='$CellNumber',
                                      `Email` = '$Email',
                                       `HomeAddress`='$HomeAddress'
+                                      'kinName'='$kinName'
                                       'kinCell'='$kinCell'
                                 WHERE `patientID` = '$idNumber'";
                        $run_query =  mysqli_query($connect,$update);

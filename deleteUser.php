@@ -5,11 +5,11 @@
                    
     $data=json_decode(file_get_contents("php://input"));
     if (count($data)>0){
-      
-              $idNumber=mysqli_real_escape_string($connect, $data->idNumber);
+               $idNumber=mysqli_real_escape_string($connect, $data->idNumber);
+               $active=mysqli_real_escape_string($connect, $data->Active);
                          
-              $user_sel= " UPDATE `patient` SET active = 0 where idNumber ='$idNumber'";
-              $run_query = mysqli_query($connect,$user_sel);        
+               $user_sel= " UPDATE `patient` SET active = '$active' where idNumber ='$idNumber'";
+               $run_query = mysqli_query($connect,$user_sel);        
      }
      if (mysqli_query($connect, $user_sel)) {
                   
