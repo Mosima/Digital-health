@@ -15,28 +15,24 @@
 			<img class="image" src="img/med/careLogo.svg">
         </div>
                 <div class="col-md-12 nav-pills-container">
-                    <ul class="nav nav-pills">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="patient.html">Patient</a></li>
-                        <li><a href="doctor.html">Doctor</a></li>
-                        <li><a href="pharmacist.html">Pharmacist</a></li>
-                        <li><a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()">Admin</a></li>
+                    <ul class="nav nav-pills col-md-10">
+                        <li><a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"><span class=" glyphicon glyphicon-log-in"></span></a></li>
                     </ul>
                 </div>
- 
-            <footer style="align-content: center">
+
+           <!-- <footer style="align-content: center">
                     <div class="row">
                     <div class="col-lg-12">
                         <p>Copyright &copy; www.digitalhealth.com 2017</p>
                     </div>
                 </div>
-            </footer>          
+            </footer>  -->        
 <script type="text/ng-template" id="logInModalContent.html">
         <!-- log in Modal-->
         <form class="form-horizontal" name="logInForm">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button>
-                <h4 class="modal-title">Admin Log in</h4>
+                <h4 class="modal-title">Log In</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -48,12 +44,39 @@
                                 <span style="color:red" ng-show="logInForm.username.$pristine && logInForm.username.$invalid"> username is required.</span>
                             </div>
                         </div>
+                        <div ng-if="data.forgot !=='Y'">
                         <div class="form-group" >
                             <label class="control-label col-sm-2" for="pwd">Password:</label>
                             <div class="col-sm-10" ng-class="{'has-error' : logInForm.password.$invalid && !logInForm.password.$pristine }">
                                 <input type="password" class="form-control" id="pwd" name="password" ng-model="data.password" placeholder="Enter password" required>
                                 <span style="color:red" ng-show="logInForm.password.$pristine && logInForm.password.$invalid"> password is required.</span>
                             </div>
+                          </div>
+                        </div>
+                        <div class="form-group" >
+                            <div class"col-md-12">
+                                 <div class="col-md-2">
+                                        <label class="radioBtnLabel" style="padding:3px" >Admin</label><input  type="radio" data-ng-model="data.logValue" value="Admin">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="radioBtnLabel" style="padding:3px">Patient</label><input  type="radio" data-ng-model="data.logValue" value="Patient">
+                                    </div>
+                                 <div class="col-md-2">
+                                     <label class="radioBtnLabel" style="padding:3px" >Doctor</label><input type="radio"  data-ng-model="data.logValue" value="Doctor"> 
+                                 </div>
+                                 <div class="col-md-3">
+                                     <label class="radioBtnLabel" style="padding:3px" >Pharmacist</label><input type="radio" data-ng-model="data.logValue" value="Pharmacist">
+                                 </div>
+                             </div>
+                             <br>
+                             <div class="col-md-12"></div>
+                             <div class="form-group" style="padding:20px">
+                            <label class="control-label col-md-4" for="pwd"> forgot Password ?</label>
+                            <div class="col-sm-1" >
+                                <input type="checkbox" class="form-control"  ng-model="data.forgot" ng-true-value="'Y'" >
+                          
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -64,6 +87,7 @@
             </div>
         </form>
     </script>
+   
      <div data-ng-view="" ng-cloak> </div>
       <script src="js/jquery.js" type="text/javascript"></script>
       <script src="js/bootstrap.js" type="text/javascript"></script>

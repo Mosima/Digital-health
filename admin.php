@@ -27,7 +27,7 @@
          <!-- create user filter-->
         <div class="form-group col-sm-6 filter-group">
             <div class="col-sm-3">
-            <button class="btn btn-primary" data-toggle="modal" data-backdrop="static" data-target="#siginModal" ng-click="openSignModal()" >Create Patient</button>             
+            <button class="btn btn-default" style="color:blue" data-toggle="modal" data-backdrop="static" data-target="#siginModal" ng-click="openSignModal()" >Create Patient</button>             
             </div>
              <div class="col-sm-3">                     
             </div>
