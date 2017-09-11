@@ -16,17 +16,9 @@
         </div>
                 <div class="col-md-12 nav-pills-container">
                     <ul class="nav nav-pills col-md-10">
-                        <li><a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"><span class=" glyphicon glyphicon-log-in"></span></a></li>
+                        <li style="padding-left:200px"><a   data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"><span class=" glyphicon glyphicon-log-in" style="font-size: x-large;"></span></a></li>
                     </ul>
-                </div>
-
-           <!-- <footer style="align-content: center">
-                    <div class="row">
-                    <div class="col-lg-12">
-                        <p>Copyright &copy; www.digitalhealth.com 2017</p>
-                    </div>
-                </div>
-            </footer>  -->        
+                </div>                  
 <script type="text/ng-template" id="logInModalContent.html">
         <!-- log in Modal-->
         <form class="form-horizontal" name="logInForm">
@@ -67,16 +59,20 @@
                                  <div class="col-md-3">
                                      <label class="radioBtnLabel" style="padding:3px" >Pharmacist</label><input type="radio" data-ng-model="data.logValue" value="Pharmacist">
                                  </div>
-                             </div>
+                             </div>    
                              <br>
-                             <div class="col-md-12"></div>
+                             </div>
                              <div class="form-group" style="padding:20px">
-                            <label class="control-label col-md-4" for="pwd"> forgot Password ?</label>
+                            <label class="control-label col-md-4" for="pwd">forgot Password ?</label>
                             <div class="col-sm-1" >
                                 <input type="checkbox" class="form-control"  ng-model="data.forgot" ng-true-value="'Y'" >
                           
                             </div>
                         </div>
+                         <div class="col-md-12">
+                                 <div class="alert alert-danger alert-dismissible" style="background-color:lightcoral ; color:black" role="alert" ng-if="showError==1">  
+                                 <strong><span class="glyphicon glyphicon-thumbs-down"></span></strong> {{errors}}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -17,18 +17,31 @@ app.controller("indexController", function ($scope, $http,$modal,sharedService,l
 app.controller("adminlogInController", function ($scope, $http, $modalInstance, toaster, $dialogs,sharedService,loginService,$window) {
  "use strict"
     $scope.setDirtyForm = function (form) { angular.forEach(form.$error, function (type) { angular.forEach(type, function (field) { field.$setDirty(); }); }); return form; };
- 
-   
+ $scope.showError = null;
+ $scope.errors=null;
+  
     $scope.saveLogIn = function (logInData) {
 
      if ($scope.logInForm.$valid) {
           if(logInData.forgot=='Y'){
              $http.post(
                 "forgotPassword.php", {
-                          'username': logInData.username
+                          'username': logInData.username,'logValue': logInData.logValue
                             }
+                            
                         ).then(function (response) {
-                            console.log("Data Inserted Successfully. Data:" + response + " " + logInData); 
+                           if(response.data ==2){
+                                 $scope.errors= "No Record For"+" "+ logInData.logValue +" "+ " Was Found";
+                                 $scope.showError = 1;
+                            }else{
+                                 $modalInstance.close();  
+                                 toaster.success('PLease Check Your Mail.', ' ',
+                                    toaster.options = {
+                                        "positionClass": "toast-top-center",
+                                        "closeButton": true
+                                    });
+                            }
+
                         })              
            }else{
                 loginService.logIn(logInData).then(function (response) {
@@ -42,8 +55,16 @@ app.controller("adminlogInController", function ($scope, $http, $modalInstance, 
             }else if(response.data.password==$scope.data.password && response.data.username==$scope.data.username){
                      $scope.dataToShare = [];                                          
                           $scope.dataToShare = response.data;
-                         sharedService.addData($scope.dataToShare); 
-                             window.location.href='admin.php';                                                    
+                         sharedService.addData($scope.dataToShare);
+                         if($scope.dataToShare.Role=="Patient"){
+                             window.location.href='user.php'; 
+                         }else if($scope.dataToShare.role=="Admin") {
+                             window.location.href='admin.php'; 
+                         }else if($scope.dataToShare.role=="doctor") {
+                             window.location.href='doctor.php'; 
+                         }else if($scope.dataToShare.role=="pharmacist") {
+                             window.location.href='pharmacist.php'; 
+                         }                                                               
             }else if(response.data ==2){
                  toaster.error('Wrong Username entered',
                                            '', toaster.options = {

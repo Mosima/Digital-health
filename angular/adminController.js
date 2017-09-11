@@ -5,9 +5,13 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
     //here logging in assigning object with the information from DB
        $scope.sharedData = sharedService.getData();
         $scope.details=$scope.sharedData[0];
+         if( $scope.details==undefined){
+           window.location.href='index.php'; 
+          }
         $scope.username=$scope.sharedData[0].username ;
         $scope.password = $scope.sharedData[0].password;
-      
+
+     
         //opening sign in modal
  $scope.openSignModal = function (patients) {
         var modalInstance = $modal.open({
@@ -118,12 +122,13 @@ $scope.patientData=patients;
                                     });
                         $modalInstance.close();
                  }else if((response.data== 3)){
+                     $modalInstance.close();
                      toaster.success('Patient Updated.', ' ',
                                     toaster.options = {
                                         "positionClass": "toast-top-center",
                                         "closeButton": true
                                     });
-                        $modalInstance.close();
+                        
                }else{
                      toaster.error('Patient Already Exist.', ' ',
                                     toaster.options = {

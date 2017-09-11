@@ -1,6 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en" data-ng-app="HealthApp">
 <head>
     <title>User </title>
     <meta charset="utf-8">
@@ -10,16 +10,15 @@
      <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
-
-<body>
+<body ng-controller="userController">
     <div class="col-md-12 header">
-        <div class="logo"></div>
+       <div class="logo"></div>  
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">
             <li><a href="#">Home</a></li>
             <li class="selected-nav-item"><a >Reports</a></li>
-            <li class="logout-li"><a href="#"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
+            <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
         </ul>
     </div>
     <div class="col-md-12 search-and-results-container"> 
@@ -31,19 +30,22 @@
                         <div class="col-md-1 no-padding-left vertical-align-center">                          
                         </div>
                         <div class="col-md-10 no-padding-left">
-                            <div class="concession-name">cebo shezi</div>
-                            <div>29 may 1991</div>
+                            <div class="concession-name">{{details.FirstName}} {{details.Surname}}</div>
+                            <div>{{details.idNumber}}</div>
                         </div>
                     </div>
                     <div class="col-md-10">
-                        <div class="single-print"><i class="fa fa-print" aria-hidden="true"></i></div>
+                        <div class="single-print"><i class="fa fa-edit" aria-hidden="true"></i></div>
                     </div>
                     <div class="col-md-10 no-padding-left">
                         <div class="col-md-2 no-padding-left">
-                            Gender:Male
+                            Gender:{{details.Gender}}
                         </div>
-                        <div class="col-md-2">
-                           Cell Number: 0834271834
+                        <div class="col-md-3">
+                           Cell Number: {{details.CellNumber}}
+                        </div>
+                        <div class="col-md-4">
+                          Next of Kin: {{details.kinName}} {{details.kinCell}}
                         </div>
                     </div>
                 </div>
@@ -57,17 +59,20 @@
                                 <th>Date Created</th>
                                 <th>Treated By</th>
                                 <th>Prescription</th>
-                                <th>Last Visited Hospital</th>
+                                <th>Treated Day</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td> CNA </td>
-                                <td>Lending</td>
-                                <td>Approved</td>
-                                <td>2017/05/02 </td>
-                                <td> 2017/05/03 </td>
+                                <td>{{patientInfo.patientID}}</td>
+                                <td>{{patientInfo.createDate}}</td>
+                                <td>{{patientInfo.doctorName}}</td>
+                                <td>{{patientInfo.medicalEvent}} </td>
+                                <td>{{patientInfo.dateOfEvent}} </td>
                             </tr>
+                             <tr ng-if="!patientInfo">
+                                  <td colspan="12">You currently dont have medical history </td>
+                            </tr> 
                         </tbody>
                     </table>
                 </div>
@@ -75,9 +80,23 @@
         </div>
         <!-- footer-->
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="js/jquery.js" type="text/javascript"></script>
+      <script src="js/bootstrap.js" type="text/javascript"></script>
+        <!-- angular extentions-->
+      <script src="js/angular.js" type="text/javascript"></script> 
+      <script src="app.js" type="text/javascript"></script>
+      <script src="js/toaster.min.js" type="text/javascript"></script>
+      <script src="js/angular-moment.min.js" type="text/javascript"></script>
+      <script src="js/angular-route.min.js" type="text/javascript"></script>
+      <script src="js/angular-ui-router.js" type="text/javascript"></script>
+      <script src="js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+      <script src="js/dialogs.min.js" type="text/javascript"></script> 
+      <script src="js/idvalidator.js" type="text/javascript"></script> 
+        <!-- Load controllers -->
+     <script src="angular/userController.js" type="text/javascript"></script>  
+     <script src="angular/sharedService.js" type="text/javascript"></script>  
+     <script src="angular/loginService.js" type="text/javascript"></script>    
+   
 </body>
 
 </html>

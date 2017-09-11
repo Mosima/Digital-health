@@ -90,8 +90,8 @@
                     </td>
                     <td>
                         <button class="btn btn-primary" ng-click="openSignModal(patient)">Edit</button>
-                        <button  ng-if="patient.Active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)">Active</button>
-                        <button ng-if="patient.Active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)">In-Active</button>   
+                        <button  ng-if="patient.Active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-up"> </span> Active</button>
+                        <button ng-if="patient.Active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-down"></span> In-Active</button>   
                         <button ng-if="patient.Active=='1'" class="btn btn-success">Assign Doctor</button>                 
                    </td>
                 </tr>               

@@ -22,7 +22,7 @@
               $username=substr($idNumber,0,6);
               $password=substr($idNumber,9,5); 
               $errors = array();
-///VALUES ('user3', PASSWORD('pass123'));
+
               if($userState=='Create'){
                         //checking if the patient already exist
                         $user_sel= "SELECT * FROM `patient` where idNumber ='$idNumber'";
@@ -42,11 +42,11 @@
                     
                         if (mysqli_query($connect, $sql)) {
                           
-                          /*    $to = $Email;
+                              $to = $Email;
                               $subject = "Registration Confirmation";
-                              $message = "Your username is". " " . $student_no . " " ."Passwors is " . $password ;
+                              $message = "Your Username is". " " . $username . " " ."Passwors is " . $password ;
                               $headers = "From:Sosha Hospital"; 
-                            mail($to,$subject,$message,$headers);*/
+                              mail($to,$subject,$message,$headers);
                             
                           } else {
                             
