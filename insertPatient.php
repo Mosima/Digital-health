@@ -60,7 +60,7 @@
                                       `HomeAddress`='$HomeAddress'
                                       'kinName'='$kinName'
                                       'kinCell'='$kinCell'
-                                WHERE `patientID` = '$idNumber'";
+                                WHERE `idNumber` = '$idNumber'";
                        $run_query =  mysqli_query($connect,$update);
                         $data= 3;
                    }

@@ -30,16 +30,19 @@ app.controller("adminlogInController", function ($scope, $http, $modalInstance, 
                             }
                             
                         ).then(function (response) {
-                           if(response.data ==2){
+                           if(response.data == 2){
                                  $scope.errors= "No Record For"+" "+ logInData.logValue +" "+ " Was Found";
                                  $scope.showError = 1;
-                            }else{
+                            }else if(response.data == 1){
                                  $modalInstance.close();  
                                  toaster.success('PLease Check Your Mail.', ' ',
                                     toaster.options = {
                                         "positionClass": "toast-top-center",
                                         "closeButton": true
                                     });
+                            }else{
+                                 $scope.errors= "Unknown Errror Occur Please Contact Your Hospital";
+                                 $scope.showError = 1;
                             }
 
                         })              

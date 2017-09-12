@@ -12,26 +12,27 @@
             if($userValue=="Patient"){
                   $user_sel= "select password,Email from Patient where username='$username'"; 
             }else{
-                   $user_sel= "select password,Email from staffmember where username='$username' and role='$userValue'";
+                   $user_sel= "select password,email from staffmember where username='$username' and role='$userValue'";
             }            
               $run_query = mysqli_query($connect,$user_sel);
               $check_user = mysqli_num_rows($run_query);
 
               if($check_user>0)
-                {                                
-                     $row = mysqli_fetch_assoc($run_query);
-                     // $row=$run_query->fetch_assoc();
-                     $datas = $row;
-                      //print  json_encode($datas);
-                      $to = $datas->$Email;
-                      $subject = "forot Password";
-                      $message = "Your password is "." ".$datas->$password ;
+                {    
+                     $row=$run_query->fetch_assoc();
+                      $datas=$row;
+                          
+                      print  json_encode($datas);
+                      $to = $datas->$email;
+                      $subject = "Forgot Password";
+                      $message = "Your password is "." ".$datas->$password;
                       $headers = "From: Sosha Hospital"; 
-                       mail($to,$subject,$message,$headers);
+                      mail($to,$subject,$message,$headers);
 
                    $data=1;
                 }else{
                   $data=2;
+                    
                 }    
             } 
             
