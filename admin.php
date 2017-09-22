@@ -17,13 +17,13 @@
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">           
             <li><a href="#"><span class="glyphicon glyphicon-home"></span> </a></li>   
-            <li><a href="#">Staff Members</a></li>   
+            <li><a href="staffMember.php">Staff Members</a></li>   
             <li><a href="#">Reports</a></li>                
             <li class="logout-li"  ng-click="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 
         </ul>      
    </div> 
     <!-- Total widgets -->
-    <div class="col-md-12">
+  <div class="col-md-12">
          <!-- create user filter-->
         <div class="form-group col-sm-6 filter-group">
             <div class="col-sm-3">
@@ -90,9 +90,9 @@
                     </td>
                     <td>
                         <button class="btn btn-primary" ng-click="openSignModal(patient)">Edit</button>
-                        <button  ng-if="patient.Active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-up"> </span> Active</button>
-                        <button ng-if="patient.Active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-down"></span> In-Active</button>   
-                        <button ng-if="patient.Active=='1'" class="btn btn-success">Assign Doctor</button>                 
+                        <button  ng-if="patient.active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-up"> </span> Active</button>
+                        <button ng-if="patient.active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-down"></span> In-Active</button>   
+                        <button ng-if="patient.active=='1'" class="btn btn-success">Assign Doctor</button>                 
                    </td>
                 </tr>               
               </tbody>
@@ -121,7 +121,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="name">Name:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.FirstName.$invalid && !registerForm.FirstName.$pristine }" >
-                                    <input type="text" class="form-control" id="FirstName" name="FirstName"  ng-model="patientData.FirstName" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" required>
+                                    <input type="text" class="form-control" id="FirstName" name="FirstName"  ng-model="patientData.FirstName" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" ng-readonly="{{truefalse}}"  required>
                                      <span style="color:red" ng-show="registerForm.FirstName.$pristine && registerForm.FirstName.$invalid"> name is required.</span>
                                      <span style="color:red" ng-show="registerForm.FirstName.$error.pattern">incorrect name format</span> 
                                 </div>
@@ -144,14 +144,14 @@
                             </div>
                         </div>
                         <div class="col-sm-6" > 
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Email:</label>
-                                <div class="col-sm-9" ng-class="{'has-error' : registerForm.Email.$invalid && !registerForm.Email.$pristine }">
-                                    <input type="email" class="form-control" name="email"  ng-model="patientData.Email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{1,3})$/" required>
-                                    <span style="color:red" ng-show="registerForm.email.$pristine && registerForm.email.$invalid"> email required.</span>
-                                    <span style="color:red" ng-show="registerForm.email.$error.pattern"></span>
-                                </div>
-                            </div>                           
+                        <div class="form-group">
+                        <label class="control-label col-sm-3">Email:</label>
+                        <div class="col-sm-9" ng-class="{'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+                            <input type="email" class="form-control" name="email" placeholder=" " ng-model="patientData.Email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required>
+                            <span style="color:red" ng-show="registerForm.email.$pristine && registerForm.email.$invalid"> email is required.</span>
+                            <span style="color:red" ng-show="registerForm.email.$error.pattern">invalid email!</span>
+                        </div>
+                           </div>                         
                             <div class="form-group" >
                                   <label class="control-label col-sm-3">Address:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.HomeAddress.$invalid && !registerForm.HomeAddress.$pristine }">
@@ -174,7 +174,7 @@
                             <div class="form-group">
                                     <label class="control-label col-sm-3">Cell:</label>
                                     <div class="col-sm-9" ng-class="{'has-error' : registerForm.kinCell.$invalid && !registerForm.kinCell.$pristine }">
-                                        <input type="text" class="form-control" id="kinCell" name="kinCell"  ng-model="patientData.kinCell"ng-pattern="/^[0-0][6-8][0-9]{8}$/" maxLength='10' required>                  
+                                        <input type="text" class="form-control" id="kinCell" name="kinCell"  ng-model="patientData.kinCell" ng-pattern="/^[0-0][6-8][0-9]{8}$/" maxLength='10' required>                  
                                       <span style="color:red" ng-show="registerForm.kinCell.$pristine && registerForm.kinCell.$invalid" > cell no is required.</span>
                                     <span style="color:red" ng-show="registerForm.kinCell.$error.pattern">invalid cell number!</span>
                                     </div>

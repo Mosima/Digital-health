@@ -11,23 +11,23 @@
             $errors = array();
             if($userValue=="Patient"){
                   $user_sel= "select password,Email from Patient where username='$username'"; 
+                  echo $user_sel->password;
             }else{
-                   $user_sel= "select password,email from staffmember where username='$username' and role='$userValue'";
-            }            
+                   $user_sel= "select password,Email from staffmember where username='$username' and role='$userValue'";
+            }   
+                     
               $run_query = mysqli_query($connect,$user_sel);
               $check_user = mysqli_num_rows($run_query);
 
               if($check_user>0)
                 {    
-                     $row=$run_query->fetch_assoc();
-                      $datas=$row;
-                          
-                      print  json_encode($datas);
-                      $to = $datas->$email;
-                      $subject = "Forgot Password";
-                      $message = "Your password is "." ".$datas->$password;
-                      $headers = "From: Sosha Hospital"; 
-                      mail($to,$subject,$message,$headers);
+                      $select = mysqli_fetch_assoc($run_query);
+                      echo $select["Email"];
+                     // $to =  $select["Email"];
+                      ///$subject = "Forgot Password";
+                     // $message = "Your password is "." ".$select["password"];
+                    //  $headers = "From: Sosha Hospital"; 
+                     //  mail($to,$subject,$message,$headers);
 
                    $data=1;
                 }else{

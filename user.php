@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/angular-toastr.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="userController">
@@ -102,7 +103,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="name">Name:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.FirstName.$invalid && !registerForm.FirstName.$pristine }" >
-                                    <input type="text" class="form-control" id="FirstName" name="FirstName"  ng-model="patientData.FirstName" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/" required>
+                                    <input type="text" class="form-control" id="FirstName" name="FirstName"  ng-model="patientData.FirstName" maxLength='25' ng-pattern="/^[a-zA-Z_-]*$/"  ng-readonly="{{truefalse}}" required>
                                      <span style="color:red" ng-show="registerForm.FirstName.$pristine && registerForm.FirstName.$invalid"> name is required.</span>
                                      <span style="color:red" ng-show="registerForm.FirstName.$error.pattern">incorrect name format</span> 
                                 </div>
@@ -110,7 +111,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3">Surname:</label>
                                 <div class="col-sm-9" ng-class="{'has-error' : registerForm.Surname.$invalid && !registerForm.Surname.$pristine }">
-                                    <input type="text" class="form-control" name="Surname"  data-ng-model="patientData.Surname" ng-pattern="/^[a-zA-Z_-]*$/" maxLength='25' required >
+                                    <input type="text" class="form-control" name="Surname"  data-ng-model="patientData.Surname" ng-pattern="/^[a-zA-Z_-]*$/" maxLength='25'  ng-readonly="{{truefalse}}" required >
                                      <span style="color:red" ng-show="registerForm.Surname.$pristine && registerForm.Surname.$invalid"> surname is required.</span>
                                     <span style="color:red" ng-show="registerForm.Surname.$error.pattern">incorrect surname format</span>
                                 </div>
@@ -121,6 +122,13 @@
                                     <input type="text" class="form-control" name="CellNumber"  ng-model="patientData.CellNumber" ng-pattern="/^[0-0][6-8][0-9]{8}$/" maxLength='10' required>                     
                                       <span style="color:red" ng-show="registerForm.CellNumber.$pristine && registerForm.CellNumber.$invalid"> cell number is required.</span>
                                     <span style="color:red" ng-show="registerForm.CellNumber.$error.pattern">cell number is incorrect</span> 
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Password:</label>
+                                <div class="col-sm-9" >
+                                    <input class="form-control" ng-model=patientData.password>
+                                    
                                 </div>
                             </div>
                         </div>
