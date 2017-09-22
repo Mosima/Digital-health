@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="HealthApp">
 
 <head>
     <title>Docter Side </title>
@@ -12,15 +12,15 @@
    
 </head>
 
-<body>
+<body ng-controller="doctorController">
     
     <div class="col-md-12 header">
         <div class="logo"></div>
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">
-            <li><a href="pending-inbox.html">Home</a></li>
-            <li><a href="approved-concessions.html">Reports</a></li>
+            <li><a href="home#">Home</a></li>
+            <li><a href="Reports.php">Reports</a></li>
             
             <li class="logout-li"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         </ul>
@@ -61,9 +61,7 @@
                             <thead>
                                 <tr>
                                     <th>Patient Name</th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                 
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -73,25 +71,19 @@
                                         <p class="customerInfo">Mosima</p>
                                         <p class="accInfo">Patient ID No :1123</p>
                                     </td>
-                                    <td class="rightAlign">5,0000.0</td>
-                                    <td class="rightAlign">23.33535</td>
-                                    <td class="rightAlign">60</td>
+                                   
                                     <td>
-                                        <p class="mapInfo">Loaded:1</p>
-                                        <p class="mapInfo">Approved:1</p>
+                                        <p class="mapInfo">Attended</p>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p class="customerInfo">Mtech Electronic</p>
-                                        <p class="accInfo">Patient ID No :1123</p>
+                                        <p class="customerInfo">Moses</p>
+                                        <p class="accInfo">Patient ID No :1124</p>
                                     </td>
-                                    <td class="rightAlign">5,0000.0</td>
-                                    <td class="rightAlign">120.33535</td>
-                                    <td class="rightAlign">120</td>
+                                    
                                     <td>
-                                        <p class="mapInfo">Loaded:1</p>
-                                        <p class="mapInfo">Approved:1</p>
+                                        <p class="mapInfo">Waiting</p>
                                     </td>
                                 </tr>
                             </tbody>
