@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" data-ng-app="HealthApp" >
 <head>
