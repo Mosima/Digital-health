@@ -1,4 +1,4 @@
-app.controller("adminController", function ($scope, $http,$modal,sharedService,loginService,$window,$dialogs) {
+app.controller("doctorController", function ($scope, $http,$modal,sharedService,loginService,$window,$dialogs) {
     "use strict"
 
         //here logging in assigning object with the information from DB

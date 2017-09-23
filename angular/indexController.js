@@ -63,9 +63,9 @@ app.controller("adminlogInController", function ($scope, $http, $modalInstance, 
                              window.location.href='user.php'; 
                          }else if($scope.dataToShare.role=="Admin") {
                              window.location.href='admin.php'; 
-                         }else if($scope.dataToShare.role=="doctor") {
+                         }else if($scope.dataToShare.role=="Doctor") {
                              window.location.href='doctor.php'; 
-                         }else if($scope.dataToShare.role=="pharmacist") {
+                         }else if($scope.dataToShare.role=="Pharmacist") {
                              window.location.href='pharmacist.php'; 
                          }                                                               
             }else if(response.data ==2){

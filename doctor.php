@@ -2,14 +2,14 @@
 <html lang="en" data-ng-app="HealthApp">
 
 <head>
-    <title>Docter Side </title>
+    <title>Doctor Side </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="css/angular-toastr.min.css">
     <link rel="stylesheet" href="css/style.css">
-   
 </head>
 
 <body ng-controller="doctorController">
@@ -68,7 +68,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <p class="customerInfo">Mosima</p>
+                                        <p class="customerInfo">TODO</p>
                                         <p class="accInfo">Patient ID No :1123</p>
                                     </td>
                                    
@@ -78,7 +78,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <p class="customerInfo">Moses</p>
+                                        <p class="customerInfo">TODO</p>
                                         <p class="accInfo">Patient ID No :1124</p>
                                     </td>
                                     
@@ -121,7 +121,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <p class="customerInfo">Mosima</p>
+                                            <p class="customerInfo">TODO</p>
                                             <p class="accInfo">Patient ID No :1123</p>
                                         </td>
                                         <td>
@@ -130,7 +130,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p class="customerInfo">Mtech Electronic</p>
+                                            <p class="customerInfo">TODO</p>
                                             <p class="accInfo">Patient ID No :1123</p>
                                         </td>
                                        
@@ -142,8 +142,21 @@
                             </table>
                         </div>
         </div>         
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</body>
-
+        <script src="js/jquery.js" type="text/javascript"></script>
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+          <!-- angular extentions-->
+        <script src="js/angular.js" type="text/javascript"></script> 
+        <script src="app.js" type="text/javascript"></script>
+        <script src="js/toaster.min.js" type="text/javascript"></script>
+        <script src="js/angular-moment.min.js" type="text/javascript"></script>
+        <script src="js/angular-route.min.js" type="text/javascript"></script>
+        <script src="js/angular-ui-router.js" type="text/javascript"></script>
+        <script src="js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
+        <script src="js/dialogs.min.js" type="text/javascript"></script> 
+        <script src="js/idvalidator.js" type="text/javascript"></script> 
+          <!-- Load controllers -->
+       <script src="angular/doctorController.js" type="text/javascript"></script>  
+       <script src="angular/sharedService.js" type="text/javascript"></script>  
+       <script src="angular/loginService.js" type="text/javascript"></script>    
+ </body>
 </html>
