@@ -16,7 +16,7 @@
         </div>
                 <div class="col-md-12 nav-pills-container">
                     <ul class="nav nav-pills col-md-10">
-                        <li style="padding-left:200px"><a   data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"><span class=" glyphicon glyphicon-log-in" style="font-size: x-large;"></span></a></li>
+                        <li style="padding-left:200px"><a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"> Log In <span class=" glyphicon glyphicon-log-in" style="font-size: x-large;"></span></a></li>
                     </ul>
                 </div>                  
 <script type="text/ng-template" id="logInModalContent.html">
