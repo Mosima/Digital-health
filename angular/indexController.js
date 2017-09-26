@@ -59,14 +59,77 @@ app.controller("adminlogInController", function ($scope, $http, $modalInstance, 
                      $scope.dataToShare = [];                                          
                           $scope.dataToShare = response.data;
                          sharedService.addData($scope.dataToShare);
-                         if($scope.dataToShare.Role=="Patient"){
-                             window.location.href='user.php'; 
+                         if($scope.dataToShare.role=="Patient"){
+                            if($scope.dataToShare.logged_On=="0"){
+                                $scope.dataToShare.logged=="1";
+                                $http.post(
+                                    "updateLoggedIn.php", {               
+                                        'logged':"1",'idNumber':$scope.dataToShare.idNumber,'currentUser': $scope.dataToShare.role 
+                                                }
+                                ).then(function (response) {
+                                    window.location.href='user.php';  
+                                });
+                            }else{
+                                 toaster.error('User already signed in',
+                                             '', toaster.options = {
+                                             "positionClass": "toast-top-right",
+                                            "closeButton": true
+                                });                               
+                            } 
+                            
                          }else if($scope.dataToShare.role=="Admin") {
-                             window.location.href='admin.php'; 
+                            if($scope.dataToShare.logged_On=="0"){
+                                $scope.dataToShare.logged=="1";
+                                $http.post(
+                                    "updateLoggedIn.php", {               
+                                        'logged':"1",'idNumber':$scope.dataToShare.idNumber,'currentUser': $scope.dataToShare.role 
+                                                }
+                                ).then(function (response) {
+                                 window.location.href='admin.php'; 
+                                });
+                            }else{
+                                 toaster.error('User already signed in',
+                                             '', toaster.options = {
+                                             "positionClass": "toast-top-right",
+                                            "closeButton": true
+                                });                               
+                            }                             
                          }else if($scope.dataToShare.role=="Doctor") {
-                             window.location.href='doctor.php'; 
+                            if($scope.dataToShare.logged_On=="0"){
+                                $scope.dataToShare.logged=="1";
+                                $http.post(
+                                    "updateLoggedIn.php", {               
+                                        'logged':"1",'idNumber':$scope.dataToShare.idNumber,'currentUser': $scope.dataToShare.role 
+                                                }
+                                ).then(function (response) {
+                                  window.location.href='doctor.php';  
+                                });
+                            }else{
+                                 toaster.error('User already signed in',
+                                             '', toaster.options = {
+                                             "positionClass": "toast-top-right",
+                                            "closeButton": true
+                                });                               
+                            } 
+                            
                          }else if($scope.dataToShare.role=="Pharmacist") {
-                             window.location.href='pharmacist.php'; 
+                            if($scope.dataToShare.logged_On=="0"){
+                                $scope.dataToShare.logged=="1";
+                                $http.post(
+                                    "updateLoggedIn.php", {               
+                                        'logged':"1",'idNumber':$scope.dataToShare.idNumber,'currentUser': $scope.dataToShare.role 
+                                                }
+                                ).then(function (response) {
+                                   window.location.href='pharmacist.php';  
+                                });
+                            }else{
+                                 toaster.error('User already signed in',
+                                             '', toaster.options = {
+                                             "positionClass": "toast-top-right",
+                                            "closeButton": true
+                                });                               
+                            } 
+                            
                          }                                                               
             }else if(response.data ==2){
                  toaster.error('Wrong Username entered',

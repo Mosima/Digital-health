@@ -59,10 +59,15 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
                         });
                 });
      }
- //log out
-   $scope.logout=function(){               
-               $window.sessionStorage.clear();
-              window.location.href='index.php';  
+     //log out and update logged on as xero
+      $scope.logout=function(){               
+               $http.post(
+                "updateLoggedIn.php", {               
+                    'logged':"0",'idNumber':$scope.details.idNumber,'currentUser': $scope.details.role 
+        }).then(function (response) {
+                $window.sessionStorage.clear();
+                window.location.href='index.php';
+            });              
           }
 
    

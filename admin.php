@@ -33,21 +33,21 @@
         </div>
             <div class="totalsWidget outer " >
                 <div class="activeWidget">
-                    <div class="cornered"><p>Newly files</p></div>
+                    <div class="cornered"><p>First Visit</p></div>
                     <div class="main"><p>16</p></div>
                 </div>
             </div>
             <div class="totalsWidget outer" style="margin-left: 10px;" >
-                <div class="cornered"><p></p></div>
-                <div class="main"><p></p></div>
+                <div class="cornered"><p>Waiting Doctors</p></div>
+                <div class="main"><p>12</p></div>
             </div>  
             <div class="totalsWidget outer" style="margin-left: 30px;">
-                <div class="cornered"><p></p></div>
-                <div class="main"><p></p></div>
+                <div class="cornered"><p>Treated Today</p></div>
+                <div class="main"><p>38</p></div>
             </div>
             <div class="totalsWidget outer" style="margin-left: 20px;">
-                <div class="cornered"><p> </p></div>
-                <div class="main"><p> </p></div>
+                <div class="cornered"><p>Total Prescritions </p></div>
+                <div class="main"><p>5 </p></div>
             </div>     
     </div>
 </div>
