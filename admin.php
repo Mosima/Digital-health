@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="HealthApp" >
 <head>
-  <title>Digital Health </title>
+  <title>Admin</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.css">
