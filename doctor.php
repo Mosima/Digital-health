@@ -13,9 +13,8 @@
 </head>
 
 <body ng-controller="doctorController">
-    
     <div class="col-md-12 header">
-        <div class="logo"></div>
+       <div class="logo"><h3 style="color:white;font-size:1.8em;text-align:right;">Doctor Section</h3></div> 
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">

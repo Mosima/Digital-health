@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="HealthApp" >
 <head>
-<<<<<<< HEAD
-  <title>Admin</title>
-=======
   <title>Admin </title>
->>>>>>> 47e20cc62b640d75f47bfca1179cef1ec30f37d8
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.css">
@@ -14,8 +10,8 @@
   <link rel="stylesheet" href="css/style2.css">
 </head>
 <body ng-controller="adminController">
-    <div class="col-md-12 header" >
-         <div class="logo"></div>   
+    <div class="col-md-12 header">
+      <div class="logo"><h3 style="color:white;font-size:1.8em;text-align:left;">Admin Section</h3></div> 
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">           
