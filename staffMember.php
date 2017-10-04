@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="css/bootstrap-theme.css">
      <link rel="stylesheet" href="css/font-awesome.min.css">
      <link rel="stylesheet" href="css/angular-toastr.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style2.css">
 </head>
 <body ng-controller="staffController">
     <div class="col-md-12 header">
-       <div class="logo"><h3 style="color:white;font-size:1.8em;text-align:right;">Admin Section</h3></div> 
+       <div class="logo"><h3 style="color:white;font-size:1.8em;text-align:left;">Admin Section</h3></div> 
     </div>
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">
             <li><a href="admin.php"><i class="fa fa-chevron-circle-left"></i> Back</a></li>
+            <li ><a style="text-align:center;padding-left:390px;color:black">{{adminHospital}}</a></li>  
             <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
         </ul>
     </div>

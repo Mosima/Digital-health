@@ -19,6 +19,7 @@
               $userState=mysqli_real_escape_string($connect, $patientObj->state);  
               $kinName=mysqli_real_escape_string($connect, $patientObj->kinName); 
               $kinCell=mysqli_real_escape_string($connect, $patientObj->kinCellNo);
+              $hospital=mysqli_real_escape_string($connect, $patientObj->hospital);
               $username=substr($idNumber,0,6);
               $password=substr($idNumber,9,5); 
               $errors = array();
@@ -29,27 +30,33 @@
                         $run_query = mysqli_query($connect,$user_sel);
                         //ccheck/counting number of rows for the same use if the exist from database
                         $check_user = mysqli_num_rows($run_query);
+                      
                         if($check_user>0)
                           { 
                               //use for error msg on controlller
                               $data= 0;
                           }else{
                             //insert to DB
-                                  $sql= "INSERT INTO patient(patientID,FirstName,Surname,CellNumber, Email,Gender,HomeAddress,createDate,kinName,kinCell,username,password,idNumber)
-                                  VALUES($patientID,'$FirstName','$Surname',$CellNumber,'$Email','$Gender','$HomeAddress','$createDate','$kinName','$kinCell','$username','$password','$idNumber')";             
-                                $data= 1;
+
+                            $sql = "INSERT INTO patient(patientID,idNumber,FirstName,Surname,Gender,HomeAddress,Email,CellNumber,createDate,kinName,kinCell,password,username,hospital)
+                                  VALUES('$patientID','$idNumber','$FirstName','$Surname','$Gender','$HomeAddress','$Email','$CellNumber','$createDate','$kinName','$kinCell','$password','$username','$hospital')";
+                      
+                          if (!$sql) {
+                              die('Invalid query: ' . mysql_error());
                           }
-                    
-                        if (mysqli_query($connect, $sql)) {
+
+                    }
+                        
+                        if (mysqli_query($connect,$sql)) {
                           
-                              $to = $Email;
-                              $subject = "Registration Confirmation";
-                              $message = "Your Username is". " " . $username . " " ."Passwors is " . $password ;
-                              $headers = "From:Sosha Hospital"; 
-                              mail($to,$subject,$message,$headers);
-                            
+                           //   $to = $Email;
+                            //  $subject = "Registration Confirmation";
+                            //  $message = "Your Username is". " " . $username . " " ."Passwors is " . $password ;
+                            //  $headers = "From:Sosha Hospital"; 
+                           //   mail($to,$subject,$message,$headers);
+                               $data= 1;
                           } else {
-                            
+                            $data= 10;
                           }
                    }else{
                        $update= "UPDATE `patient` 

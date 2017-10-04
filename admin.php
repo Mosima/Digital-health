@@ -17,7 +17,8 @@
         <ul class="nav nav-pills">           
             <li><a href="#"><span class="glyphicon glyphicon-home"></span> </a></li>   
             <li><a href="staffMember.php">Staff Members</a></li>   
-            <li><a href="#">Reports</a></li>                
+            <li><a href="#">Reports</a></li>   
+            <li ><a style="text-align:center;padding-left:200px;color:black">{{adminHospital}}</a></li>             
             <li class="logout-li"  ng-click="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 
         </ul>      
    </div> 
@@ -68,9 +69,11 @@
                      <th>Name</th>
                      <th>Surname</th>
                      <th>Gender</th>
+                     <th>File Creation Details</th>
                      <th>Contact</th>
                      <th>Next OF Kin</th>
-                     <th></th>                      
+                     <th></th>    
+                                       
                 </tr>
                 </thead>
                 <tbody>
@@ -82,6 +85,9 @@
                     <td>{{patient.Surname}}</td>
                     <td>
                         {{patient.Gender}}
+                    </td>
+                    <td>
+                      {{patient.createDate}} at {{patient.hospital}} 
                     </td>
                     <td>{{patient.CellNumber}}</td>
                     <td> 

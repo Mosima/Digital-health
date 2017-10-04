@@ -1,16 +1,37 @@
 
 app.controller("staffController", function ($scope, $http,$modal,sharedService,loginService,$window,$dialogs) {
-     "use strict"     
-        //get staff information
-        $scope.staffList=function(){
-            $http({
-                url: "getAllStaff.php",
-                method: "GET"
-                }).then(function (results) {
+     "use strict"  
+
+       //here logging in assigning object with the information from DB
+       $scope.sharedData = sharedService.getData();
+       $scope.details=$scope.sharedData[0];
+        if( $scope.details==undefined){
+          window.location.href='index.php'; 
+         }
+       $scope.username=$scope.sharedData[0].username ;
+       $scope.password = $scope.sharedData[0].password;
+
+       if($scope.sharedData[0].hospital_Id=="1"){
+           $scope.adminHospital="Chris Hani Baragwana Hospital";
+        }else if($scope.sharedData[0].hospital_Id=="2"){
+           $scope.adminHospital="Steve Biko Academic Hospital";
+        }else if($scope.sharedData[0].hospital_Id=="3"){
+           $scope.adminHospital="Tshwane District Hospital";
+        }else if($scope.sharedData[0].hospital_Id=="4"){
+           $scope.adminHospital="DR Goerge Mukhari Hospital";
+        }
+      var currentId=$scope.sharedData[0].hospital_Id;
+     //get staff information
+        $scope.staffList=function(currentId){
+            $http.post(
+                "getAllStaff.php", {
+                            'currentId': currentId
+                        }
+              ).then(function (results) {
                 $scope.staffData= results.data;                
             });
         }
-        $scope.staffList();
+        $scope.staffList(currentId);
 
       //patient edit
           $scope.openstaffModal = function (staffData) {
