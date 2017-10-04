@@ -46,7 +46,7 @@
                 <div class="main"><p>38</p></div>
             </div>
             <div class="totalsWidget outer" style="margin-left: 20px;">
-                <div class="cornered"><p>Total Prescritions </p></div>
+                <div class="cornered"><p>Total Prescriptions </p></div>
                 <div class="main"><p>5 </p></div>
             </div>     
     </div>

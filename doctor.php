@@ -68,22 +68,12 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <p class="customerInfo">TODO</p>
-                                        <p class="accInfo">Patient ID No :1123</p>
+                                        <p class="customerInfo">{{patient.FirstName}} {{patient.Surname}}</p>
+                                        <p class="accInfo">Patient ID No :{{patient.patientID}}</p>
                                     </td>
                                    
                                     <td>
-                                        <p class="mapInfo">Attended</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <p class="customerInfo">TODO</p>
-                                        <p class="accInfo">Patient ID No :1124</p>
-                                    </td>
-                                    
-                                    <td>
-                                        <p class="mapInfo">Waiting</p>
+                                        <p class="mapInfo">{{patient.status}}</p>
                                     </td>
                                 </tr>
                             </tbody>
@@ -91,18 +81,9 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-            <!--Second Page-->
-        
-                
-            </div>
+      </div>
         </div>
     </div>
-
-
 
     <div class=" col-md-8 section1">
                     <div class="section-header">
@@ -121,27 +102,59 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <p class="customerInfo">TODO</p>
-                                            <p class="accInfo">Patient ID No :1123</p>
+                                            <p class="customerInfo">{{patient.FirstName}} {{patient.Surname}}</p>
+                                            <p class="accInfo">Patient ID No :{{patient.patientID}}</p>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-yes" data-toggle="modal">View</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p class="customerInfo">TODO</p>
-                                            <p class="accInfo">Patient ID No :1123</p>
-                                        </td>
-                                       
-                                        <td>
-                                            <button type="button" class="btn btn-yes" data-toggle="modal" >View</button>
+                                            <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#view" data-original-title >View</a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-        </div>         
+        </div>    
+        
+
+        <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Write a Prescription.</h4>
+                            </div>
+                            <form action="#" method="post" accept-charset="utf-8">
+                            <div class="modal-body" style="padding: 5px;">  
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
+                                            <input class="form-control" name="subject" placeholder="Subject" type="text" required />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12">
+                                            <textarea style="resize:vertical;" class="form-control" placeholder="Type prescription here..." rows="6" name="comment" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="panel-footer" style="margin-bottom:-14px;">
+                                    <input type="submit" class="btn btn-success" value="Send"/>
+                                        <!--<span class="glyphicon glyphicon-ok"></span>-->
+                                    <input type="reset" class="btn btn-danger" value="Clear" />
+                                        <!--<span class="glyphicon glyphicon-remove"></span>-->
+                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+        <script>
+            
+        </script>
+
         <script src="js/jquery.js" type="text/javascript"></script>
         <script src="js/bootstrap.js" type="text/javascript"></script>
           <!-- angular extentions-->

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="css/bootstrap-theme.css">
   <link rel="stylesheet" href="css/angular-toastr.min.css">
-  <link rel="stylesheet" href="css/style2.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body ng-controller="pharmacyController">
     <div class="col-md-12 header" >
@@ -18,7 +18,7 @@
 
     <div class="col-md-12 nav">
         <ul class="nav nav-pills">           
-            <li><a href="#"><span class="glyphicon glyphicon-home"></span> </a></li>   
+            <li><a href="#"><span class="glyphicon glyphicon-home">Home</span> </a></li>   
             <li><a href="#">Patient</a></li>   
             <li><a href="#">Prescription</a></li>                
             <li class="logout-li"  ng-click="logout()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> 

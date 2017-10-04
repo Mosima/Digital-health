@@ -12,27 +12,27 @@ app.controller("doctorController", function ($scope, $http,$modal,sharedService,
         var modalInstance = $modal.open({
             backdrop: 'static',
             animation: true,
-            templateUrl: 'patientSignModalContent.html',
-            controller: 'patientRegController',
+            templateUrl: 'doctorSignModalContent.html',
+            controller: 'doctorRegController',
             size: 'lg',
              resolve: {
-                     patients: function () {
-                         return patients;
+                     doctor: function () {
+                         return doctor;
                      }
                   }
         });
          modalInstance.result.then(function (selectedItem) {
                         $scope.selected = selectedItem;
-                        $scope.patientProfile();             
+                        $scope.prescription();             
                     }, function () {
             });
         };
 
         //get patients list
-         $scope.patientProfile=function(){
+         $scope.prescription=function(){
                     $http({
-                        url: "getPatientInfo.php",
-                        method: "GET"
+                        url: "writePrescription.php",
+                        method: "POST"
                         }).then(function (results) {
                         $scope.patients= results.data;                
                     });
