@@ -11,7 +11,15 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
         $scope.username=$scope.sharedData[0].username ;
         $scope.password = $scope.sharedData[0].password;
 
-     
+        if($scope.sharedData[0].hospital_Id=="1"){
+            $scope.adminHospital="Chris Hani Baragwana Hospital";
+         }else if($scope.sharedData[0].hospital_Id=="2"){
+            $scope.adminHospital="Steve Biko Academic Hospital";
+         }else if($scope.sharedData[0].hospital_Id=="3"){
+            $scope.adminHospital="Tshwane District Hospital";
+         }else if($scope.sharedData[0].hospital_Id=="4"){
+            $scope.adminHospital="DR Goerge Mukhari Hospital";
+         }
         //opening sign in modal
  $scope.openSignModal = function (patients) {
         var modalInstance = $modal.open({
@@ -72,8 +80,10 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
 
    
 });
-app.controller("patientRegController", function ($scope, $http, $modalInstance, toaster, $dialogs,patients,loginService,$window) {
-  //set form dirty angular validation
+app.controller("patientRegController", function ($scope, $http, $modalInstance,sharedService, toaster, $dialogs,patients,loginService,$window) {
+
+    $scope.sharedData = sharedService.getData();
+    //set form dirty angular validation
   $scope.setDirtyForm = function (form) { angular.forEach(form.$error, function (type) { angular.forEach(type, function (field) { field.$setDirty(); }); }); return form; };
 $scope.updateStatus = patients != undefined ? 'Update' : 'Create';
 //for readonly on update
@@ -113,10 +123,20 @@ $scope.patientData=patients;
            var selDate = todayDate.toISOString();
             $scope.patientData.createDate=selDate.substring(0,10);
             $scope.patientData.pID=saIds.substring(7,13);
+            //hospital where file created
+             if($scope.sharedData[0].hospital_Id=="1"){
+                $scope.patientData.createdHospital="Chris Hani Baragwana";
+             }else if($scope.sharedData[0].hospital_Id=="2"){
+                $scope.patientData.createdHospital="Steve Biko Academic";
+             }else if($scope.sharedData[0].hospital_Id=="3"){
+                $scope.patientData.createdHospital="Tshwane District Hospital";
+             }else if($scope.sharedData[0].hospital_Id=="4"){
+                $scope.patientData.createdHospital="DR Goerge Mukhari";
+             }
         //send data to php file via ajax
             $http.post(
                 "insertPatient.php", {
-                    'idNo': $scope.patientData.idNumber,'pId':$scope.patientData.pID,'name': $scope.patientData.FirstName, 'surname': $scope.patientData.Surname, 'cellNo': $scope.patientData.CellNumber, 'email': $scope.patientData.Email, 'address': $scope.patientData.HomeAddress,'gender':$scope.patientData.gender,'createDate':$scope.patientData.createDate,'state':$scope.updateStatus,'kinCellNo':$scope.patientData.kinCell,'kinName':$scope.patientData.kinName 
+                    'idNo': $scope.patientData.idNumber,'pId':$scope.patientData.pID,'name': $scope.patientData.FirstName, 'surname': $scope.patientData.Surname, 'hospital': $scope.patientData.createdHospital,'cellNo': $scope.patientData.CellNumber, 'email': $scope.patientData.Email, 'address': $scope.patientData.HomeAddress,'gender':$scope.patientData.gender,'createDate':$scope.patientData.createDate,'state':$scope.updateStatus,'kinCellNo':$scope.patientData.kinCell,'kinName':$scope.patientData.kinName 
                             }
             ) .then(function (response) {
                 if(response.data== 1){
