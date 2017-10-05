@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1
--- http://www.phpmyadmin.net
+-- version 4.6.6
+-- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 25, 2017 at 06:17 PM
--- Server version: 5.7.11
--- PHP Version: 5.6.18
+-- Generation Time: Oct 05, 2017 at 02:25 PM
+-- Server version: 10.1.24-MariaDB
+-- PHP Version: 7.0.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,14 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `digital_health`
+-- Database: `id2654468_newdigitalhealth`
 --
 
 -- --------------------------------------------------------
 
 --
 -- Stand-in structure for view `allpatient_view`
+-- (See below for the actual view)
 --
 CREATE TABLE `allpatient_view` (
 `patientID` varchar(16)
@@ -37,8 +38,10 @@ CREATE TABLE `allpatient_view` (
 ,`createDate` varchar(10)
 ,`kinName` varchar(30)
 ,`kinCell` varchar(11)
-,`Role` varchar(50)
+,`role` varchar(50)
 ,`active` tinyint(1)
+,`logged_On` tinyint(1)
+,`hospital` varchar(50)
 ,`password` varchar(10)
 ,`username` varchar(15)
 );
@@ -82,20 +85,20 @@ CREATE TABLE `patient` (
   `createDate` varchar(10) DEFAULT NULL,
   `kinName` varchar(30) DEFAULT NULL,
   `kinCell` varchar(11) NOT NULL,
-  `Role` varchar(50) NOT NULL DEFAULT 'Patient',
+  `role` varchar(50) NOT NULL DEFAULT 'Patient',
   `active` tinyint(1) NOT NULL DEFAULT '1',
+  `logged_On` tinyint(1) NOT NULL,
+  `hospital` varchar(50) NOT NULL,
   `password` varchar(10) NOT NULL,
-  `username` varchar(15) NOT NULL,
-  `hospital_Id` int(4) NOT NULL,
-  `logged_On` tinyint(1) NOT NULL
+  `username` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patient`
 --
 
-INSERT INTO `patient` (`patientID`, `idNumber`, `FirstName`, `Surname`, `Gender`, `HomeAddress`, `Email`, `CellNumber`, `createDate`, `kinName`, `kinCell`, `Role`, `active`, `password`, `username`, `hospital_Id`, `logged_On`) VALUES
-('299083', '9105295299083', 'cebo', 'Shezi', 'Male', '4', 'dludlec.b@gmail.com', '834271834', '2017-09-22', 'z', '0834198245', 'Patient', 1, '9083', '910529', 0, 0);
+INSERT INTO `patient` (`patientID`, `idNumber`, `FirstName`, `Surname`, `Gender`, `HomeAddress`, `Email`, `CellNumber`, `createDate`, `kinName`, `kinCell`, `role`, `active`, `logged_On`, `hospital`, `password`, `username`) VALUES
+('299083', '9105295299083', 'tester', 'tester', 'Male', 's', 'dludlec.b@gmail.com', '0832427183', '2017-10-03', 's', '0834271834', 'Patient', 1, 0, 'Chris Hani Baragwana', '9083', '910529');
 
 -- --------------------------------------------------------
 
@@ -163,8 +166,8 @@ CREATE TABLE `staffmember` (
   `password` varchar(13) NOT NULL,
   `role` varchar(10) NOT NULL,
   `hospital_Id` int(4) NOT NULL,
-  `active` tinyint(1) NOT NULL,
-  `logged_On` tinyint(1) NOT NULL
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `logged_On` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -172,8 +175,13 @@ CREATE TABLE `staffmember` (
 --
 
 INSERT INTO `staffmember` (`staffID`, `idNumber`, `Firstname`, `Surname`, `Email`, `Gender`, `username`, `password`, `role`, `hospital_Id`, `active`, `logged_On`) VALUES
-('9102653', '653142545', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'Admin', 0, 0, 0),
-('DR9529908', '9105295299083', 'n', 'j', 'zaind@kia.co.za', 'Male', '529529', '29908', 'Doctor', 0, 0, 0);
+('910263', '9105295299083', 'Tshwane', 'adminTshwane', 'admin', 'Female', 'admin@Tshwane', 'Tshwane', 'Admin', 3, 1, 1),
+('DR9529908', '9105295299083', 'n', 'j', 'zaind@kia.co.za', 'Male', '529529', '29908', 'Doctor', 0, 1, 1),
+('DR7551008', '9510275510088', 'fumani', 'shibambu', 'shibambajoylet@gmail.com', 'Male', '027551', '51008', 'Doctor', 0, 1, 1),
+('DR2004408', '9502020044083', 'Manoko', 'Mokgobu', 'manoko_7@live.com', 'Female', '202004', '04408', 'Doctor', 1, 1, 0),
+('910261', '9105295299081', 'Bara', 'adminBara', 'admin@ChrisHaniBaragwana.', 'Male', 'admin@Bara', 'Bara', 'Admin', 1, 1, 1),
+('910262', '9105295299082', 'Steve Biko', 'adminSteve', 'admin@SteveBikoAcademic.o', 'Male', 'admin@SteveBi', 'Biko', 'Admin', 2, 1, 0),
+('910264', '9105295299084', 'Goerge Mukhari', 'adminGoerge', 'admin@GoergeMukhari.org', 'Male', 'admin@GoergeM', 'Goerge', 'Admin', 4, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -182,7 +190,7 @@ INSERT INTO `staffmember` (`staffID`, `idNumber`, `Firstname`, `Surname`, `Email
 --
 DROP TABLE IF EXISTS `allpatient_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `allpatient_view`  AS  select `patient`.`patientID` AS `patientID`,`patient`.`idNumber` AS `idNumber`,`patient`.`FirstName` AS `FirstName`,`patient`.`Surname` AS `Surname`,`patient`.`Gender` AS `Gender`,`patient`.`HomeAddress` AS `HomeAddress`,`patient`.`Email` AS `Email`,`patient`.`CellNumber` AS `CellNumber`,`patient`.`createDate` AS `createDate`,`patient`.`kinName` AS `kinName`,`patient`.`kinCell` AS `kinCell`,`patient`.`Role` AS `Role`,`patient`.`active` AS `active`,`patient`.`password` AS `password`,`patient`.`username` AS `username` from `patient` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`id2654468_newdigitalhealth`@`%` SQL SECURITY DEFINER VIEW `allpatient_view`  AS  select `patient`.`patientID` AS `patientID`,`patient`.`idNumber` AS `idNumber`,`patient`.`FirstName` AS `FirstName`,`patient`.`Surname` AS `Surname`,`patient`.`Gender` AS `Gender`,`patient`.`HomeAddress` AS `HomeAddress`,`patient`.`Email` AS `Email`,`patient`.`CellNumber` AS `CellNumber`,`patient`.`createDate` AS `createDate`,`patient`.`kinName` AS `kinName`,`patient`.`kinCell` AS `kinCell`,`patient`.`role` AS `role`,`patient`.`active` AS `active`,`patient`.`logged_On` AS `logged_On`,`patient`.`hospital` AS `hospital`,`patient`.`password` AS `password`,`patient`.`username` AS `username` from `patient` ;
 
 --
 -- Indexes for dumped tables

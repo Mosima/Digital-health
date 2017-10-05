@@ -67,8 +67,10 @@ app.controller("staffController", function ($scope, $http,$modal,sharedService,l
 
 });
 
-app.controller("staffModalController", function ($scope, $http, $modalInstance, toaster, $dialogs,staffData,loginService,$window) {
-  //set form dirty angular validation
+app.controller("staffModalController", function ($scope, $http,sharedService, $modalInstance, toaster, $dialogs,staffData,loginService,$window) {
+ 
+    $scope.sharedData = sharedService.getData();
+       //set form dirty angular validation
   $scope.setDirtyForm = function (form) { angular.forEach(form.$error, function (type) { angular.forEach(type, function (field) { field.$setDirty(); }); }); return form; };
 $scope.updateStatus = staffData != undefined ? 'Update' : 'Create';
 //for readonly on update
@@ -115,10 +117,12 @@ $scope.staffData=staffData;
 
             var reT=saIds.substring(5,12);
             $scope.staffData.pID=roleVal + reT;
+          //hospital created
+             $scope.staffData.createdHospital=$scope.sharedData[0].hospital_Id;
             //send data to php file via ajax
             $http.post(
                 "staffMemberInsert.php", {
-                    'idNo': $scope.staffData.idNumber,'pId':$scope.staffData.pID,'name': $scope.staffData.Firstname, 'surname': $scope.staffData.Surname, 'email': $scope.staffData.Email, 'gender':$scope.staffData.gender,'role':$scope.staffData.role,'state':$scope.updateStatus
+                    'idNo': $scope.staffData.idNumber,'hospital_Id':  $scope.staffData.createdHospital,'pId':$scope.staffData.pID,'name': $scope.staffData.Firstname, 'surname': $scope.staffData.Surname, 'email': $scope.staffData.Email, 'gender':$scope.staffData.gender,'role':$scope.staffData.role,'state':$scope.updateStatus
                             }
             ).then(function (response) {
                 if(response.data== 1){

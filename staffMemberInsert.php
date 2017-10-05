@@ -14,6 +14,7 @@
               $Surname=mysqli_real_escape_string($connect, $patientObj->surname);
               $Email=mysqli_real_escape_string($connect, $patientObj->email);
               $Gender=mysqli_real_escape_string($connect, $patientObj->gender);
+              $hospital_Id=mysqli_real_escape_string($connect, $patientObj->hospital_Id);	
               $userState=mysqli_real_escape_string($connect, $patientObj->state);  
               $username=substr($idNumber,3,6);
               $password=substr($idNumber,7,5); 
@@ -31,8 +32,8 @@
                               $data= 0;
                           }else{
                             //insert to DB
-                            $sql= "INSERT INTO staffmember(staffID,idNumber,Firstname,Surname,Email,Gender,username,password,role)
-                                    VALUES ('$staffID','$idNumber','$FirstName','$Surname','$Email','$Gender','$username','$password','$role')";          
+                            $sql= "INSERT INTO staffmember(staffID,idNumber,Firstname,Surname,Email,Gender,username,password,role,hospital_Id)
+                                    VALUES ('$staffID','$idNumber','$FirstName','$Surname','$Email','$Gender','$username','$password','$role','$hospital_Id')";          
                                 $data= 1;
                           }
                     
