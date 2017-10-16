@@ -101,7 +101,8 @@
         <!-- Load controllers -->
      <script src="angular/indexController.js" type="text/javascript"></script>  
      <script src="angular/sharedService.js" type="text/javascript"></script>  
-     <script src="angular/loginService.js" type="text/javascript"></script>          
+     <script src="angular/loginService.js" type="text/javascript"></script>
+               
 </body>
 </html>
 <toaster-container></toaster-container>

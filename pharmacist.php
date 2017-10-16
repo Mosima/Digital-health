@@ -23,34 +23,14 @@
         </ul>      
    </div> 
     <!-- Total widgets -->
-    <div class="col-md-12">
-
-            <div class="totalsWidget outer " >
-                <div class="activeWidget">
-                    <div class="cornered"><p>Newly files</p></div>
-                    <div class="main"><p>16</p></div>
-                </div>
-            </div>
-            <div class="totalsWidget outer" style="margin-left: 10px;" >
-                <div class="cornered"><p></p></div>
-                <div class="main"><p></p></div>
-            </div>  
-            <div class="totalsWidget outer" style="margin-left: 30px;">
-                <div class="cornered"><p></p></div>
-                <div class="main"><p></p></div>
-            </div>
-            <div class="totalsWidget outer" style="margin-left: 20px;">
-                <div class="cornered"><p> </p></div>
-                <div class="main"><p> </p></div>
-            </div>     
-    </div>
+   
 </div>
     <div class="col-md-12 search-and-results-container">
           <!-- Search bar -->
          <div class="input-group add-on">
-             <input class="form-control" placeholder="Search Patient" name="srch-term" id="srch-term" type="text"  ng-model="filterUsers">
+             <input class="form-control" placeholder="Search Patient  ID/Pres code" name="srch-term" id="srch-term" type="text"  ng-model="filterUsers">
                <div class="input-group-btn">
-                    <button class="btn btn-default-search" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default-search" type="button" ng-click="searchPrescription(filterUsers)"><i class="glyphicon glyphicon-search"></i></button>
              </div>
           </div>
       <!-- Results table -->
@@ -58,34 +38,28 @@
             <table class="table table-bordered table-hover header-fixed table-striped">
                 <thead>
                 <tr>
-                     <th>Patient ID</th>
-                     <th>Name</th>
-                     <th>Surname</th>
-                     <th>Gender</th>
-                     <th>Contact</th>
-                     <th>Next OF Kin</th>
-                     <th></th>                      
+                     <th>Patient Details</th>
+                     <th>Prescription Date</th>
+                     <th>Hospital</th>
+                     <th>Doctors Details</th>
+                     <th>Description</th>                      
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="patient in patients | filter:filterUsers">
                     <td>
-                       {{patient.patientID}}
+                       {{presDetails.FirstName}} {{presDetails.Surname}}
                     </td>
-                    <td>{{patient.FirstName}}</td>
-                    <td>{{patient.Surname}}</td>
+                    <td>{{presDetails.treatmentDate}}</td>
+                    <td>{{presDetails.hospital}}</td>
                     <td>
-                        {{patient.Gender}}
+                        {{presDetails.Firstname}} {{presDetails.Surname}}
                     </td>
-                    <td>{{patient.CellNumber}}</td>
-                    <td> 
-                        {{patient.kinName}}  {{patient.kinCell}}
-                    </td>
+                    <td>{{presDetails.description}}</td>
+
                     <td>
                         <button class="btn btn-primary" ng-click="openSignModal(patient)">Edit</button>
-                        <button  ng-if="patient.Active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)">Active</button>
-                        <button ng-if="patient.Active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)">In-Active</button>   
-                        <button ng-if="patient.Active=='1'" class="btn btn-success">Assign Doctor</button>                 
+ 
                    </td>
                 </tr>               
               </tbody>
@@ -195,7 +169,7 @@
       <script src="js/dialogs.min.js" type="text/javascript"></script> 
       <script src="js/idvalidator.js" type="text/javascript"></script> 
         <!-- Load controllers -->
-     <script src="angular/adminController.js" type="text/javascript"></script>   
+     <script src="angular/pharmacyController.js" type="text/javascript"></script>   
       <script src="angular/sharedService.js" type="text/javascript"></script>  
      <script src="angular/loginService.js" type="text/javascript"></script>  
 </body>
