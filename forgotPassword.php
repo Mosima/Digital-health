@@ -10,7 +10,7 @@
             $userValue= mysqli_real_escape_string($connect, $data->logValue);     
             $errors = array();
             if($userValue=="Patient"){
-                  $user_sel= "select password,Email from Patient where username='$username'"; 
+                  $user_sel= "select password,Email from patient where username='$username'"; 
                   echo $user_sel->password;
             }else{
                    $user_sel= "select password,Email from staffmember where username='$username' and role='$userValue'";
@@ -22,7 +22,7 @@
               if($check_user>0)
                 {    
                       $select = mysqli_fetch_assoc($run_query);
-                      echo $select["Email"];
+                     
                      // $to =  $select["Email"];
                       ///$subject = "Forgot Password";
                      // $message = "Your password is "." ".$select["password"];

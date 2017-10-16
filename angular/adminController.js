@@ -1,7 +1,6 @@
 
 app.controller("adminController", function ($scope, $http,$modal,sharedService,loginService,$window,$dialogs) {
     "use strict"
-
     //here logging in assigning object with the information from DB
        $scope.sharedData = sharedService.getData();
         $scope.details=$scope.sharedData[0];
@@ -20,6 +19,18 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
          }else if($scope.sharedData[0].hospital_Id=="4"){
             $scope.adminHospital="DR Goerge Mukhari Hospital";
          }
+         var currentId=$scope.sharedData[0].hospital_Id;
+         //get doctors information
+            $scope.docList=function(currentId){
+                $http.post(
+                    "getDocCurHospital.php", {
+                                'currentId': currentId
+                            }
+                  ).then(function (results) {
+                    $scope.docData= results.data;                
+                });
+            }
+            $scope.docList(currentId);
         //opening sign in modal
  $scope.openSignModal = function (patients) {
         var modalInstance = $modal.open({
@@ -50,13 +61,11 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
                     });
         }
     $scope.patientsList();
-
      //delete user
      $scope.delete =function(patient){
            var dlg = null;
                 dlg = $dialogs.confirm("Are you sure you want make changes. Continue?", "");
-                dlg.result.then(function (btn) {
-                
+                dlg.result.then(function (btn) {              
            $http.post(
                          "deleteUser.php", {
                                 'idNumber': patient.idNumber,'Active': patient.state
@@ -76,6 +85,19 @@ app.controller("adminController", function ($scope, $http,$modal,sharedService,l
                 $window.sessionStorage.clear();
                 window.location.href='index.php';
             });              
+          }
+
+          //assign doctor
+          $scope.assign=function(docData){
+               $scope.selectedDoc=docData.selectedDoc.staffID;
+               $http.post(
+                "assignDoctor.php", {
+                       'idNumber': docData.idNumber,'doID':$scope.selectedDoc
+                   }
+               ).then(function (response) {
+                  $window.location.reload();                  
+               });
+
           }
 
    

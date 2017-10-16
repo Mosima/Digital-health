@@ -10,11 +10,11 @@
                $idNumber = mysqli_real_escape_string($connect, $data->idNumber);  
                $errors = array();
                
-               $user_sel= "select *
-                           From 
-                               patient a,patienthistory b
-                           where 
-                                a.patientID = b.patientID and a.idNumber='$idNumber'"; 
+               $user_sel= "SELECT a.patientID,a.assignedTo,b.hospital_Id,b.Firstname,b.Surname 
+                            FROM `patient` a ,`staffmember` b 
+                            WHERE   a.assignedTo = b.staffID
+                               AND  b.role='Doctor'
+                               AND a.idNumber=$idNumber"; 
 
                $run_query = mysqli_query($connect,$user_sel);
                $check_user = mysqli_num_rows($run_query);
@@ -27,7 +27,7 @@
 
                 }else{
 
-                 echo "username or password is incorrect";
+                  $data=0;
                 }
            
            }

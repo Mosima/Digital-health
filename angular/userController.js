@@ -26,7 +26,17 @@ app.controller("userController", function ($scope, $http,$modal,sharedService,lo
                                   'idNumber': userData
                               }
                     ).then(function (response) {
-                          $scope.patientInfo= response.data;            
+                          $scope.patientInfo= response.data; 
+                                                    
+                if($scope.patientInfo.hospital_Id=="1"){
+                    $scope.patientInfo.Hospital="Chris Hani Baragwana Hospital";
+                    }else if($scope.patientInfo.hospital_Id=="2"){
+                        $scope.patientInfo.Hospital="Steve Biko Academic Hospital";
+                    }else if($scope.patientInfo.hospital_Id=="3"){
+                        $scope.patientInfo.Hospital="Tshwane District Hospital";
+                    }else if($scope.patientInfo.hospital_Id=="4"){
+                        $scope.patientInfo.Hospital="DR Goerge Mukhari Hospital";
+                    }          
             });
 
       //patient edit

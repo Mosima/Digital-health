@@ -14,8 +14,6 @@
     <div class="col-md-12 header" >
          <div class="logo"></div>   
     </div>
-
-
     <div class="col-md-12 nav">
         <ul class="nav nav-pills">           
             <li><a href="#"><span class="glyphicon glyphicon-home">Home</span> </a></li>   

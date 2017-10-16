@@ -31,7 +31,7 @@
                             if($check_pas > 0){
                                     $rowP=$run_queryP->fetch_assoc();
                                 if($password == $rowP['password']){
-                                    $user_sel= "select * from staffmember where username='$username' and password='$password'";
+                                    $user_sel= "select * from staffmember where username='$username' and password='$password'and role='$userValue'";
                                     $run_query = mysqli_query($connect,$user_sel);
                                     $row=$run_query->fetch_assoc();
                                     header('Content-type: application/json');

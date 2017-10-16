@@ -117,7 +117,7 @@
                             <div class="col-sm-9" >
                                 <select style="width:100%;height:30px" name="role" ng-model="staffData.role"  required>
                                     <option value="Doctor">Doctor</option>
-                                    <option value="Phamacist">Phamacist</option>
+                                    <option value="Pharmacist">Pharmacist</option>
                                      <option value="" selected hidden />
                                 </select>
                                 <span style="color:red" ng-show="registerForm.role.$pristine && registerForm.role.$invalid"> required</span>

@@ -32,24 +32,6 @@
              <div class="col-sm-3">                     
             </div>
         </div>
-            <div class="totalsWidget outer " >
-                <div class="activeWidget">
-                    <div class="cornered"><p>First Visit</p></div>
-                    <div class="main"><p>16</p></div>
-                </div>
-            </div>
-            <div class="totalsWidget outer" style="margin-left: 10px;" >
-                <div class="cornered"><p>Waiting Doctors</p></div>
-                <div class="main"><p>12</p></div>
-            </div>  
-            <div class="totalsWidget outer" style="margin-left: 30px;">
-                <div class="cornered"><p>Treated Today</p></div>
-                <div class="main"><p>38</p></div>
-            </div>
-            <div class="totalsWidget outer" style="margin-left: 20px;">
-                <div class="cornered"><p>Total Prescriptions </p></div>
-                <div class="main"><p>5 </p></div>
-            </div>     
     </div>
 </div>
     <div class="col-md-12 search-and-results-container">
@@ -72,8 +54,7 @@
                      <th>File Creation Details</th>
                      <th>Contact</th>
                      <th>Next OF Kin</th>
-                     <th></th>    
-                                       
+                     <th></th>                      
                 </tr>
                 </thead>
                 <tbody>
@@ -91,13 +72,18 @@
                     </td>
                     <td>{{patient.CellNumber}}</td>
                     <td> 
-                        {{patient.kinName}}  {{patient.kinCell}}
-                    </td>
-                    <td>
                         <button class="btn btn-primary" ng-click="openSignModal(patient)">Edit</button>
                         <button  ng-if="patient.active=='1'" ng-model="patient.state=0"  class="btn btn-info" ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-up"> </span> Active</button>
                         <button ng-if="patient.active=='0'" ng-model="patient.state=1"  class="btn btn-warning"  ng-click="delete(patient)"><span class="glyphicon glyphicon-thumbs-down"></span> In-Active</button>   
-                        <button ng-if="patient.active=='1'" class="btn btn-success">Assign Doctor</button>                 
+                                    
+                   </td>
+                   <td>
+                   <button ng-if="patient.assignedTo=='0'" class="btn btn-success" ng-click="assign(patient)">Assign Doctor</button>
+                   <div class="col-md-7" ng-if="patient.assignedTo=='0'">
+                         <select class="form-control"  name="appointment_time"  ng-options="doc as doc.Firstname for doc in docData track by doc.staffID" ng-model="patient.selectedDoc"  required> 
+                          <option value="" selected hidden />
+                        </select>    
+                     </div> 
                    </td>
                 </tr>               
               </tbody>

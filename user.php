@@ -18,7 +18,7 @@
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">
             <li><a href="#">Home</a></li>
-            <li class="selected-nav-item"><a >Reports</a></li>
+            <li class="selected-nav-item"><a href="user-report.php">Reports</a></li>
             <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
         </ul>
     </div>
@@ -53,27 +53,22 @@
             </div>
             <div class="section-body">
                 <div class="table-container">
-                    <table class="table table-bordered table-hover header-fixed table-striped">
+                    <table class="table table-bordered table-hover header-fixed table-striped" ng-show="patientInfo">
                         <thead>
                             <tr>
                                 <th>Patient ID </th>
-                                <th>Date Created</th>
-                                <th>Treated By</th>
-                                <th>Prescription</th>
-                                <th>Treated Day</th>
+                                <th>assigned To Doctor</th>
+                                <th>Hospital</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{patientInfo.patientID}}</td>
-                                <td>{{patientInfo.createDate}}</td>
-                                <td>{{patientInfo.doctorName}}</td>
-                                <td>{{patientInfo.medicalEvent}} </td>
-                                <td>{{patientInfo.dateOfEvent}} </td>
-                            </tr>
-                             <tr ng-if="!patientInfo">
-                                  <td colspan="12">You currently dont have medical history </td>
-                            </tr> 
+                                <td>{{patientInfo.Firstname}} {{patientInfo.Surname}}</td>
+                                <td>{{patientInfo.Hospital}} </td>
+                            </tr>                           
                         </tbody>
                     </table>
                 </div>
