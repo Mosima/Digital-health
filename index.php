@@ -21,7 +21,7 @@
                 </div>                  
 <script type="text/ng-template" id="logInModalContent.html">
         <!-- log in Modal-->
-        <form class="form-horizontal" name="logInForm">
+        <form class="form-horizontal" name="presInForm">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button>
                 <h4 class="modal-title">Log In</h4>
@@ -102,6 +102,7 @@
      <script src="angular/indexController.js" type="text/javascript"></script>  
      <script src="angular/sharedService.js" type="text/javascript"></script>  
      <script src="angular/loginService.js" type="text/javascript"></script>
+     <script src="angular/doctorController.js" type="text/javascript"></script>
                
 </body>
 </html>

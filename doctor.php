@@ -6,9 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="css/angular-toastr.min.css">
+   
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -105,7 +103,7 @@
                                             <p class="accInfo">Patient ID No :{{patient.patientID}}</p>
                                         </td>
                                         <td>
-                                            <a class="btn btn-primary btn-lg" data-toggle="modal" data-target="#view" data-original-title >View</a>
+                                            <a class="btn" type="button" data-toggle="modal" data-backdrop="static" data-target="#presModalContent.html" ng-click="openPresModal()" >View</a>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -114,39 +112,27 @@
         </div>    
         
 
-        <div class="modal fade" id="view" tabindex="-1" role="dialog" aria-labelledby="contactLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="panel-title" id="contactLabel"><span class="glyphicon glyphicon-info-sign"></span> Write a Prescription.</h4>
-                            </div>
-                            <form action="#" method="post" accept-charset="utf-8">
-                            <div class="modal-body" style="padding: 5px;">  
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12" style="padding-bottom: 10px;">
-                                            <input class="form-control" name="subject" placeholder="Subject" type="text" required />
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <textarea style="resize:vertical;" class="form-control" placeholder="Type prescription here..." rows="6" name="comment" required></textarea>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="panel-footer" style="margin-bottom:-14px;">
-                                    <input type="submit" class="btn btn-success" value="Send"/>
-                                        <!--<span class="glyphicon glyphicon-ok"></span>-->
-                                    <input type="reset" class="btn btn-danger" value="Clear" />
-                                        <!--<span class="glyphicon glyphicon-remove"></span>-->
-                                    <button style="float: right;" type="button" class="btn btn-default btn-close" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+     <script type="text/ng-template" id="presModalContent.html">
+        
+        <form class="form-horizontal" name="presForm">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button>
+                <h4 class="modal-title">Write Prescription</h4>
+            </div>
+            <div class="modal-body">
+            <div class="form-group" >
+            <label class="control-label col-sm-2">Prescription:</label>
+            <div class="col-sm-10" ng-class="{'has-error' : logInForm.username.$invalid && !logInForm.username.$pristine }">
+                <input type="text" class="form-control" id="prescription" name="username" placeholder="Enter prescription" ng-model="data.description"   required>
+                
+            </div>
+        </div>   
+            <div class="modal-footer row">
+                <button type="button" value="submit" class="btn btn-success" ng-click="savePrescription(data)">Submit</button>
+                <button type="button" class="btn btn-default" ng-click="close()">Close</button>
+            </div>
+        </form>
+    </script>
 
 
 

@@ -3,18 +3,16 @@
        require_once 'inc.php';
 
       //decode json object         
-    $patientObj=json_decode(file_get_contents("php://input"));
+    $presObj=json_decode(file_get_contents("php://input"));
 
     if (count($patientObj)>0){
 
-        $patientID=mysqli_real_escape_string($connect, $patientObj->pressCode);
-        $Subject=mysqli_real_escape_string($connect, $patientObj->$subject);
-        $Prescription=mysqli_real_escape_string($connect, $patientObj->prescription);
+        $description=mysqli_real_escape_string($connect, $presObj->$description);
         $errors = array();
 
         //inserting
-        $sql= "INSERT INTO prescription(presCode,prescription,subject)
-        VALUES($presCode,'$Prescription','$Subject)";  
+        $sql= "INSERT INTO prescription(presCode,description)
+        VALUES($presCode,$description)";  
     }
 
     print  json_encode($data);
