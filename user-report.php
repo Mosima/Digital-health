@@ -21,51 +21,43 @@
          <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
      </ul>
  </div>
+ <div class="col-md-12">
+ {{detail.FirstName}} {{detail.Surname}}
+ </div>
+
 <div class="col-md-9">
        <div id="exportable">
-        <div class="col-md-8" style="text-align: center;">Information Report</div>
+        <div class="col-md-8 " style="text-align: center;"> Patient Information Report</div>
             <div class= "row">
             <div class="col-md-11">               
-                    <table class="table" >
+                    <table class="table export-table" >
                         <thead >
                                 <tr class="table-header">  
-                                   <th>Student Number<th/> 
-                                        <th>Name<th/> 
-                                        <th>Surname<th/>  
-                                        <th>Status<th/> 
-                                        <th >Outstanding Fees<th/>
-                                        <th >Appointment Information<th/>  
+                                   <th><th/>                                    
                                 </tr>
                             </thead>                       
                             <tbody>
-                                    <tr ng-repeat="appInfo in getAppInforms"> 
-                                     
-                                       <td>{{appInfo.student_no}}</td>  
-                                           <td></td>
-                                            <td>{{appInfo.first_name}}</td>  
-                                            <td></td>
-                                            <td>{{appInfo.last_name}}</td>
-                                            <td></td>  
-                                            <td >{{appInfo.status}}</td>
-                                            <td></td> 
-                                            <td>R{{appInfo.amount_due}}</td> 
-                                            <td></td>
-                                            <td>{{appInfo.appointment_date}} {{appInfo.appointment_time}} </td>            
+                                    <tr ng-repeat="appInfo in getAppInforms">                                     
+                                            <td>Patient {{appInfo.patientID}}  Was Treated on {{appInfo.treatmentDate}}  By Doctor {{appInfo.Firstname}} {{appInfo.Surname}} 
+                                              At {{appInfo.Hospital_Name}}
+                                           </td>            
                                     </tr>
                             </tbody>           
-                    </table>
-                    <div class="alert alert-success">
-                        <span class="glyphicon glyphicon-happy-face"></span> You can use this report to register if you are already unblocked by an Advisor <a class="alert-link"></a>.
-                    </div>
+                    </table>                    
                 </div>
                 </div>
             </div>
-
-     <button  class="btn btn-success" ng-click="exportData()">Export</button>
-     <select>
-     </select>
-</div>
-  
+    <div class="col-md-2">    
+     <select class="form-control"  name="appointment_time"  ng-model="selectedExport"  required>
+     <option value="csv">CSV</option>
+     <option value="pdf">PDF</option>
+     <option value='doc'>WORD</option>
+     <option value='excel'>EXCEL</option>
+      <option value="" selected hidden />
+   </select>   
+   </div>
+   <button  class="btn btn-success" ng-click=exportAction(selectedExport)>Export</button>
+</div>  
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
   <!-- angular extentions-->
@@ -78,6 +70,11 @@
 <script src="js/ui-bootstrap-tpls.min.js" type="text/javascript"></script>
 <script src="js/dialogs.min.js" type="text/javascript"></script> 
 <script src="js/idvalidator.js" type="text/javascript"></script> 
+<script src="js/tableExport.js" type="text/javascript">></script>
+<script src="js/jquery.base64.js" type="text/javascript">></script>
+<script src="js/sprintf.js" type="text/javascript">></script>
+<script src="js/jspdf.js" type="text/javascript">></script>
+<script src="js/base64.js" type="text/javascript">></script>
   <!-- Load controllers -->
 <script src="angular/userReportsController.js" type="text/javascript"></script>  
 <script src="angular/sharedService.js" type="text/javascript"></script>  
