@@ -10,9 +10,10 @@
                $staffID = mysqli_real_escape_string($connect, $data->pIdNo);
                $errors = array();
             
-              $user_sel= " SELECT a.patientID,a.treatmentDate,a.hospital,b.Firstname,b.Surname,b.hospital_Id
-                            FROM `patienttreatment` a,`staffmember` b
+              $user_sel= " SELECT a.patientID,a.treatmentDate,a.hospital,b.Firstname,b.Surname, hos.Hospital_Name
+                            FROM `patienttreatment` a,`staffmember` b,`hospital` hos
                             Where a.doctorId=b.staffID
+                              and b.hospital_Id=hos.Id
                              And a.patientID=$staffID";
               
               $run_query = mysqli_query($connect,$user_sel);
