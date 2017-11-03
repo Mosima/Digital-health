@@ -20,10 +20,11 @@
                             <a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"> Log In <span class=" glyphicon glyphicon-log-in" style="font-size: x-large;"></span></a>
                         </li>
                     </ul>
-                </div>                  
+                </div>  
+
 <script type="text/ng-template" id="logInModalContent.html">
         <!-- log in Modal-->
-        <form class="form-horizontal" name="presInForm">
+        <form class="form-horizontal" name="logInForm">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button>
                 <h4 class="modal-title">Log In</h4>

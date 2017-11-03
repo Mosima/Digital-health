@@ -59,6 +59,7 @@
                             $data= 10;
                           }
                    }else{
+                       
                        $update= "UPDATE `patient` 
                                  SET `FirstName` = '$FirstName',
                                      `Surname` = '$Surname',

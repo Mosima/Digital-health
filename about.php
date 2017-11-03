@@ -9,16 +9,16 @@
   <link rel="shortcut icon" href="assets/images/care-medical-logo-400x320.jpg" type="image/x-icon">
   <meta name="description" content="Web Site Creator Description">
   <title>about</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/soundcloud-plugin/style.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/animate.css/animate.min.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="assets/assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/assets/soundcloud-plugin/style.css">
+  <link rel="stylesheet" href="assets/assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/assets/animate.css/animate.min.css">
+  <link rel="stylesheet" href="assets/assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/assets/mobirise/css/mbr-additional.css" type="text/css">
   
   
   
@@ -41,7 +41,7 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <a href="/">
-                         <img src="assets/images/care-medical-logo-400x320.jpg" alt="Mobirise" title="" media-simple="true" style="height: 3.8rem;">
+                         <img src="assets/assets/images/care-medical-logo-400x320.jpg" alt="Mobirise" title="" media-simple="true" style="height: 3.8rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/">Digital Health</a></span>
@@ -138,16 +138,16 @@
 </section>
 
 
-  <script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-  <script src="assets/touch-swipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/viewport-checker/jquery.viewportchecker.js"></script>
-  <script src="assets/jarallax/jarallax.min.js"></script>
-  <script src="assets/dropdown/js/script.min.js"></script>
-  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/assets/popper/popper.min.js"></script>
+  <script src="assets/assets/tether/tether.min.js"></script>
+  <script src="assets/assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/assets/smooth-scroll/smooth-scroll.js"></script>
+  <script src="assets/assets/touch-swipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/assets/viewport-checker/jquery.viewportchecker.js"></script>
+  <script src="assets/assets/jarallax/jarallax.min.js"></script>
+  <script src="assets/assets/dropdown/js/script.min.js"></script>
+  <script src="assets/assets/theme/js/script.js"></script>
   
   
  <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbri-down mbr-iconfont"></i></a></div>

@@ -127,6 +127,7 @@ $scope.patientData=patients;
              $("#errors").html('');
        }
     }
+
 //saving patient file
     $scope.save =function() {
 
