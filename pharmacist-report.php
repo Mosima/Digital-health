@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en" data-ng-app="HealthApp">
 <head>
-    <title>user report</title>
+    <title>Pharmacist report</title>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -21,11 +21,8 @@
          <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
      </ul>
  </div>
- <div class="col-md-12">
 
- </div>
-
-<div class="col-md-9">
+<div class="col-md-6">
        <div id="exportable">
         <div class="col-md-8 " style="text-align: center;"> Patient Who Previously Visited  {{detail.Firstname}} {{detail.Surname}}  Report</div>
             <div class= "row">
@@ -39,7 +36,7 @@
                             <tbody>
                                     <tr ng-repeat="appInfo in getAppInforms">                                     
                                             <td>On The {{appInfo.presDate}} Pharmacist {{detail.Firstname}} {{detail.Surname}} Gave Out Medicine To Patient {{appInfo.Firstname}} {{appInfo.Surname}} for {{appInfo.Description}}
-                                              
+ 
                                            </td>            
                                     </tr>
                             </tbody>           
@@ -58,6 +55,51 @@
    </div>
    <button  class="btn btn-success" ng-click=exportAction(selectedExport)>Export</button>
 </div>  
+<div class="col-md-6">
+<div id="exportable">
+<div class="col-md-8 " style="text-align: center;"> Visiting Patient History Report</div>
+	<div class="row">
+        <div class="col-sm-6">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group">
+                    <input type="text" class="form-control"  placeholder="Search Patient ID" ng-model="filterUsers" >
+                    <span class="input-group-addon">
+                        <button type="button" ng-click="searchPrescription(filterUsers)">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>
+    <div class= "row">
+    <div class="col-md-11">               
+            <table class="table export-table" >
+                <thead >
+                        <tr class="table-header">  
+                           <th><th/>                                    
+                        </tr>
+                    </thead>                       
+                    <tbody>
+                            <tr ng-repeat="appy in presDetails">                                     
+                                    <td>On The Date Of  {{appy.treatmentDate}} Patient {{filterUsers}}  Recieved Medication From Pharmacist {{appy.Firstname}} {{appy.Surname}} For {{appy.Description}} 
+                                      At {{appy.placeIssued}} 
+                                   </td> 
+                                              
+                            </tr >
+                            <tr ng-if="ind==0">
+                            <td>
+                                 No Patient History Available Yet
+                             </td>
+                         </tr>
+                    </tbody>           
+            </table>                    
+        </div>
+        </div>
+    </div>
+<div class="col-md-2">    
+</div>  
+</div>
 <script src="js/jquery.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
   <!-- angular extentions-->

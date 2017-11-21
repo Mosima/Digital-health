@@ -11,6 +11,19 @@ app.controller("phamReportController", function ($scope, $http, $modal, toaster,
      $scope.password = $scope.sharedData[0].password;
     var userData= $scope.sharedData[0].staffID;
 
+
+                    $scope.searchPrescription=function(preData){
+                        $http.post(
+                        "user-report-Pham.php", {
+                                'idNumber': preData
+                                }
+                        ).then(function (response) {
+                                $scope.presDetails= response.data; 
+                                $scope.ind=1;
+
+                    });   
+                } 
+
                $http.post(
                         "phamVisit.php", {
                              'pIdNo': userData

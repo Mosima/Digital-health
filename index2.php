@@ -15,12 +15,18 @@
 			<img class="image" src="img/med/careLogo.svg">
         </div>
                 <div class="col-md-12 nav-pills-container">
-                    <ul class="nav nav-pills col-md-10">
-                        <li style="padding-left:200px">
-                            <a  data-toggle="modal" data-backdrop="static" data-target="#loginModal" ng-click="openlogInModal()"> Log In <span class=" glyphicon glyphicon-log-in" style="font-size: x-large;"></span></a>
-                        </li>
-                    </ul>
-                </div>  
+                    
+             </div>  
+                <div class="col-md-4 center-block">
+                <button id="singlebutton" name="singlebutton" class="btn btn-primary center-block" ng-click="openlogInModal()">Log In</button>
+           </div>
+           <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                <button class="btn btn-primary" id="singlebutton"> Next Step!</button>
+                </div>
+            </div>
+     </div>
 
 <script type="text/ng-template" id="logInModalContent.html">
         <!-- log in Modal-->

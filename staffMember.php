@@ -17,6 +17,7 @@
     <div class="col-md-12 nav-pills-container">
         <ul class="nav nav-pills">
             <li><a href="admin.php"><i class="fa fa-chevron-circle-left"></i> Back</a></li>
+            <li><a href="admin-staff-report.php"> Staff Members Reports</a></li>
             <li ><a style="text-align:center;padding-left:390px;color:black">{{adminHospital}}</a></li>  
             <li class="logout-li"><a ng-click="logout()"><div class="glyphicon glyphicon-log-out"></div> Logout</a></li>
         </ul>
@@ -24,14 +25,13 @@
     <div class="col-md-12 search-and-results-container"> 
         <div class="form-group col-sm-6 filter-group">
                 <div class="col-sm-3">
-                <button class="btn btn-primary" style="color:white" data-toggle="modal" data-backdrop="static" data-target="#siginModal" ng-click="openstaffModal()" >Add Staff Member</button>             
+                <button class="btn btn-primary"   style="color:white" data-toggle="modal" data-backdrop="static" data-target="#siginModal" ng-click="openstaffModal()" >Add Staff Member</button>             
                 </div>
                 <div class="col-sm-3">                     
                 </div>
       </div>
       <div class="form-group col-sm-4 filter-group">
-                <div class="col-sm-3">
-                <button class="btn btn-primary" style="color:white" >View Staff Members Reports </button>             
+                <div class="col-sm-3">            
                 </div>
                 <div class="col-sm-3">                     
                 </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2017 at 03:04 PM
+-- Generation Time: Nov 17, 2017 at 03:27 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 5.6.31
 
@@ -102,7 +102,8 @@ CREATE TABLE `patient` (
 --
 
 INSERT INTO `patient` (`patientID`, `idNumber`, `FirstName`, `Surname`, `Gender`, `HomeAddress`, `Email`, `CellNumber`, `createDate`, `kinName`, `kinCell`, `role`, `active`, `password`, `username`, `hospital`, `logged_On`, `assignedTo`) VALUES
-('299083', '9105295299083', 'D', 'SHEZI', 'Male', '0', 'dludlec.b@gmail.co.za', '0834271800', '2017-10-03', 'D', '0834241728', 'Patient', 1, '9083', '910529', 'Chris Hani Baragwana', 0, 'DR9529908');
+('299083', '9105295299083', 'D', 'SHEZI', 'Male', '0', 'dludlec.b@gmail.co.za', '0834271800', '2017-10-03', 'D', '0834241728', 'Patient', 1, '9083', '910529', 'Chris Hani Baragwana', 0, 'DR9529908'),
+('510088', '9510275510088', 'fumani', 'shibambu', 'Male', 'PTA CBD 0001', 'shibambujoylet@gmil.com', '0788640369', '2017-11-10', 'Urgent', '0739389476', 'Patient', 1, '0088', '951027', 'Chris Hani Baragwana', 0, '0');
 
 -- --------------------------------------------------------
 
@@ -112,9 +113,8 @@ INSERT INTO `patient` (`patientID`, `idNumber`, `FirstName`, `Surname`, `Gender`
 
 CREATE TABLE `patientmedicine` (
   `patientID` varchar(50) NOT NULL,
-  `presDate` varchar(10) NOT NULL,
+  `presDate` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `presCode` varchar(20) NOT NULL,
-  `comment` varchar(100) NOT NULL,
   `phamId` varchar(16) NOT NULL,
   `placeIssued` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -123,8 +123,18 @@ CREATE TABLE `patientmedicine` (
 -- Dumping data for table `patientmedicine`
 --
 
-INSERT INTO `patientmedicine` (`patientID`, `presDate`, `presCode`, `comment`, `phamId`, `placeIssued`) VALUES
-('299083', '2017/10/02', '9993', 'he came for aids traetment', 'Pham9529908', 'Tshwane Hospital');
+INSERT INTO `patientmedicine` (`patientID`, `presDate`, `presCode`, `phamId`, `placeIssued`) VALUES
+('299083', '2017-10-02 00:00:00.000000', '9993', 'Pham9529908', 'Tshwane Hospital'),
+('299083', '2017-10-29 10:09:24.787553', '9993', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-29 10:14:17.123830', '9993', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('', '2017-10-31 17:18:44.033964', '', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('', '2017-10-31 17:18:46.833682', '', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-31 17:20:54.135915', '9994', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-31 17:20:54.995858', '9994', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-31 17:20:55.203523', '9994', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-31 17:20:55.567468', '9994', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-10-31 17:20:55.769543', '9994', 'Pham9529908', 'Chris Hani Baragwana Hospital'),
+('299083', '2017-11-02 01:19:19.251938', '9995', 'Pham9529908', 'Chris Hani Baragwana Hospital');
 
 -- --------------------------------------------------------
 
@@ -146,7 +156,12 @@ CREATE TABLE `patienttreatment` (
 --
 
 INSERT INTO `patienttreatment` (`treatID`, `patientID`, `doctorID`, `treatmentDate`, `hospital`, `Description`) VALUES
-(1, '299083', 'DR9529908', '2017-10-15 00:00:00.000000', 'Baragwanath Hospital', 'Aids');
+(1, '299083', 'DR9529908', '2017-10-15 00:00:00.000000', 'Baragwanath Hospital', 'Aids'),
+(2, '299083', 'ccsdsdd', '2017-10-27 20:29:35.826973', 'Chris Hani Baragwana Hospital', 'yes'),
+(3, '299083', 'DR9529908', '2017-10-27 20:39:22.330420', 'Chris Hani Baragwana Hospital', 'jturgnrgugrgi-552'),
+(4, '299083', 'DR9529908', '2017-10-31 17:32:24.953889', 'Chris Hani Baragwana Hospital', ''),
+(5, '299083', 'DR9529908', '2017-11-10 16:44:46.544328', 'Chris Hani Baragwana Hospital', 't7bynunyb'),
+(6, '510088', 'DR9529908', '2017-11-10 16:44:58.365282', 'Chris Hani Baragwana Hospital', 'poiuytrtyuiop');
 
 -- --------------------------------------------------------
 
@@ -158,7 +173,6 @@ CREATE TABLE `prescription` (
   `presCode` int(11) NOT NULL,
   `description` varchar(50) NOT NULL,
   `patientID` varchar(16) NOT NULL,
-  `treatID` int(11) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -166,8 +180,13 @@ CREATE TABLE `prescription` (
 -- Dumping data for table `prescription`
 --
 
-INSERT INTO `prescription` (`presCode`, `description`, `patientID`, `treatID`, `active`) VALUES
-(9993, 'flue', '299083', 1, 1);
+INSERT INTO `prescription` (`presCode`, `description`, `patientID`, `active`) VALUES
+(9993, 'flue', '299083', 0),
+(9994, 'xxxscdfd', '299083', 0),
+(9995, 'ghfbbhfvfh', '299083', 0),
+(9996, 'hgfhghjn', '299083', 1),
+(9997, '-11111', '299083', 1),
+(9998, 'po', '510088', 1);
 
 -- --------------------------------------------------------
 
@@ -195,9 +214,9 @@ CREATE TABLE `staffmember` (
 --
 
 INSERT INTO `staffmember` (`staffID`, `idNumber`, `Firstname`, `Surname`, `Email`, `Gender`, `username`, `password`, `role`, `hospital_Id`, `active`, `logged_On`) VALUES
-('9102653', '11111111111', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'Admin', 1, 0, 1),
-('DR9529908', '11111111111', 'n', 'j', 'zaind@kia.co.za', 'Male', '529529', '29908', 'Doctor', 1, 0, 1),
-('Pham9529908', '9105295299083', 'Cebolamadlaba', 'shezi', 'dludlec.b@gmail.com', 'Male', '529529', '29908', 'Pharmacist', 1, 0, 1);
+('9102653', '22222222', 'admin', 'admin', 'admin', 'admin', 'admin', 'admin', 'Admin', 1, 0, 1),
+('DR9529908', '11111111111', 'n', 'j', 'zaind@kia.com', 'Male', '529529', '12345', 'Doctor', 1, 0, 0),
+('Pham9529908', '9105295299083', 'Cebolamadlaba', 'shezi', 'dludlec.b@gmail.co.za', 'Male', '529529', '00000', 'Pharmacist', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -243,12 +262,12 @@ ALTER TABLE `hospital`
 -- AUTO_INCREMENT for table `patienttreatment`
 --
 ALTER TABLE `patienttreatment`
-  MODIFY `treatID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `treatID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `prescription`
 --
 ALTER TABLE `prescription`
-  MODIFY `presCode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9994;COMMIT;
+  MODIFY `presCode` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9999;COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
